@@ -41,14 +41,14 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
+$db['default']['hostname'] = '10.12.200.4:3306';
 //$db['default']['username'] = 'sauvegarde'; //EN QUALIF
 //$db['default']['password'] = 'pialot'; //EN QUALIF
 //$db['default']['username'] = 'appeclat';//EN PROD
 //$db['default']['password'] = 'ent_eclat';//EN PROD
 $db['default']['username'] = 'root';// EN LOCAL
 $db['default']['password'] = '';// EN LOCAL
-$db['default']['database'] = 'eclat2';
+$db['default']['database'] = 'expeditor';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

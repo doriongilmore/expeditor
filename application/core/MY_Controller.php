@@ -35,7 +35,7 @@ abstract class MY_Controller extends CI_Controller
     
     /** Librairie qui permet de loguer les accès utilisateurs */
 //    if (!$ajax)
-        $this->load->library('log_access');
+    $this->load->library('log_access');
    
     
     // initialise la les donné de l'utilisateur connecter
@@ -44,9 +44,6 @@ abstract class MY_Controller extends CI_Controller
     
     if(is_null($this->user->identifiant_actor) && preg_match('/authentification/',$_SERVER['REQUEST_URI']) != 1)
     {
-//        $arr = explode('/eclat', $_SERVER['REQUEST_URI']);
-//        $arr = explode('.html', $arr[1]);
-//        $_SESSION['wished_url'] = ($arr[0] == '/' || $arr[0] == '/index.php')?'accueil':$arr[0];
         $_SESSION['wished_url'] = $this->uri->uri_string();
         redirect('connexion/authentification','refresh');
     }
@@ -54,8 +51,6 @@ abstract class MY_Controller extends CI_Controller
     {
         $this->data['user'] = $this->user;
     }
-//    $this->data['user'] = $this->user;
-    /*/* vue pour optimisation*/
 //      $this->output->enable_profiler(TRUE);
   }
 

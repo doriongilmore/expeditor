@@ -41,29 +41,6 @@
 $route['default_controller']  = "accueil";
 
 $route['authentification']  = "accueil/authentification";
-$route['habilitation']  = "admin/habilitations";
-$route['affect']  = "admin/affectations";
-$route['affecter/(:any)']  = "admin/affecter/$1";
-$route['supprAffect/(:any)/(:any)']  = "admin/supprimerAffectation/$1/$2";
-
-$route['formulaire']  = "c_situation/creation";
-$route['liste_d']  = "c_situation/liste";
-$route['liste_c']  = "c_situation/liste_cdt";
-
-$route['traitementS/(:any)']  = "c_situation/traitementSearchList/$1";
-$route['traitementC/(:any)']  = "c_situation/traitementClassicList/$1";
-//$route['traitement/(:any)']  = "c_situation/traitement/$1";
-$route['visionner/(:any)']  = "c_situation/visionner/$1";
-$route['modifier/(:any)']  = "c_situation/modifier/$1";
-$route['messCreation/(:any)']  = "c_situation/messCreation/$1";
-$route['supprSD/(:any)']  = "c_situation/supprimer/$1";
-
-$route['filtreSituation']  = "c_situation/filtrer";
-$route['search']  = "c_situation/rechercher";
-$route['export']  = "c_situation/export";
-$route['export/(:any)']  = "c_situation/export/$1";
-$route['exportManager']  = "c_situation/exportManager";
-$route['statistiques']  = "c_situation/stats";
 
 
 

@@ -6,28 +6,16 @@ $name = explode('/', $_SERVER['SERVER_NAME']);
 $protocole = ((preg_match('/authentification/',$_SERVER['REQUEST_URI']) == 1)?'https':'http');
 define('PROTOCOLE',$protocole);
 
-define('NOM_APPLICATION','ECLAT');
+define('NOM_APPLICATION','EXPEDITOR');
 
 // Attention la variable NOM_APPLICATION ne correspond pas toujours dans ce cas le faire manuellement
-define('APPLICATION_URI', PROTOCOLE.'://' . $name[0] . '/eclat');
+define('APPLICATION_URI', PROTOCOLE.'://' . $name[0] . '/expeditor');
 define('NUM_VERSION','1.0');
-define('MAIL_BALMCO','mailto:DC-DP_P-DVOUEST-MCO-DEV/F/EDF/FR?subject=Incident '.NOM_APPLICATION.' EDF Commerce Ouest');
-define('MAIL_DEV','guillaume.gobled@edf.fr');
 
 //define('PROFIL_UTILISATEUR',1);
-define('PROFIL_CDT',1);
-define('PROFIL_EXPERT',2);
-define('PROFIL_ADMIN',3);
-define('PROFIL_MANAGER',4);
+define('PROFIL_1',1);
+define('PROFIL_2',2);
 
-
-define('HORAIRE_DEBUT',8);
-define('HORAIRE_FIN',17);
-
-
-define('ERR_UPLOAD', -1);
-define('ERR_CREATION', -2);
-define('ERR_MAJ', -3);
 
 
 

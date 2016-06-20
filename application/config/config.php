@@ -14,13 +14,7 @@
 | path to your installation.
 |
 */
-//if(ENVIRONMENT == 'production')
-//    $config['base_url']	= PROTOCOLE.'://planetcommercial-dcouest.edf.fr/eclat';//EN PROD
-//elseif(ENVIRONMENT == 'qualif')
-//    $config['base_url']	= PROTOCOLE.'://clayw41vm.cla.edfgdf.fr/eclat/';            //en QUALIF
-//elseif(ENVIRONMENT == 'local')
-    $config['base_url']     = 'http://local.planetcommercial-dcouest.edf.fr/eclat';//EN LOCAL
-//    var_dump($config['base_url']);
+$config['base_url']     = 'http://10.12.200.4/expeditor';//EN LOCAL
 
 
 /*
@@ -288,12 +282,7 @@ $config['global_session'] = 'dco_global_session';
 */
 $config['cookie_prefix']	= "";
 
-//if(ENVIRONMENT == 'production')
-//    $config['cookie_domain']	= 'planetcommercial-dcouest.edf.fr/eclat';//EN PROD
-//elseif(ENVIRONMENT == 'qualif')
-//    $config['cookie_domain']	= 'clayw41vm.cla.edfgdf.fr';            //en QUALIF
-//elseif(ENVIRONMENT == 'local')
-    $config['cookie_domain']     = 'local.planetcommercial-dcouest.edf.fr';//EN LOCAL
+$config['cookie_domain']     = '10.12.200.4';//EN LOCAL
 
 $config['cookie_path']		= "/";
 $config['cookie_secure']	= FALSE;
@@ -323,7 +312,7 @@ $config['global_xss_filtering'] = TRUE;
 */
 $config['csrf_protection']  = TRUE;
 $config['csrf_token_name']  = 'ci_csrf_token';
-$config['csrf_cookie_name'] = 'csrf_eclat_dc';
+$config['csrf_cookie_name'] = 'csrf_expeditor_dc';
 $config['csrf_expire']      = 14400;
 
 /*

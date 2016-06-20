@@ -12,5 +12,29 @@
  * @author Administrateur
  */
 class M_bdArticle {
-    //put your code here
+    
+     public function __construct() {
+        
+        parent::__construct();
+    } 
+    
+    public function getById($id){
+       $this->db->select('*')
+                ->from('article')
+                ->where('id_article', $id);
+                
+        $res = $this->db->get()->result();
+        return $res[0];   
+    }
+    
+    public function getByNom($nom){
+        $this->db->select('*')
+                ->from('article')
+                ->where('nom', $nom);
+                
+        $res = $this->db->get()->result();
+        return $res[0];   
+    }
+    
+    
 }

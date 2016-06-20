@@ -1,5 +1,12 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+// etat et constante
+
+define('ETAT_EN_COURS', 0);
+define('ETAT_ATTENTE', 0);
+
+define('PROFIL_EMPLOYE', 0);
+define('PROFIL_MANAGER', 0);
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes

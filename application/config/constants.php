@@ -1,0 +1,73 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * Url de l'application
+ */
+$name = explode('/', $_SERVER['SERVER_NAME']);
+$protocole = ((preg_match('/authentification/',$_SERVER['REQUEST_URI']) == 1)?'https':'http');
+define('PROTOCOLE',$protocole);
+
+define('NOM_APPLICATION','ECLAT');
+
+// Attention la variable NOM_APPLICATION ne correspond pas toujours dans ce cas le faire manuellement
+define('APPLICATION_URI', PROTOCOLE.'://' . $name[0] . '/eclat');
+define('NUM_VERSION','1.0');
+define('MAIL_BALMCO','mailto:DC-DP_P-DVOUEST-MCO-DEV/F/EDF/FR?subject=Incident '.NOM_APPLICATION.' EDF Commerce Ouest');
+define('MAIL_DEV','guillaume.gobled@edf.fr');
+
+//define('PROFIL_UTILISATEUR',1);
+define('PROFIL_CDT',1);
+define('PROFIL_EXPERT',2);
+define('PROFIL_ADMIN',3);
+define('PROFIL_MANAGER',4);
+
+
+define('HORAIRE_DEBUT',8);
+define('HORAIRE_FIN',17);
+
+
+define('ERR_UPLOAD', -1);
+define('ERR_CREATION', -2);
+define('ERR_MAJ', -3);
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| File and Directory Modes
+|--------------------------------------------------------------------------
+|
+| These prefs are used when checking and setting modes when working
+| with the file system.  The defaults are fine on servers with proper
+| security, but you may wish (or even need) to change the values in
+| certain environments (Apache running a separate process for each
+| user, PHP under CGI with Apache suEXEC, etc.).  Octal values should
+| always be used to set the mode correctly.
+|
+*/
+define('FILE_READ_MODE', 0644);
+define('FILE_WRITE_MODE', 0666);
+define('DIR_READ_MODE', 0755);
+define('DIR_WRITE_MODE', 0777);
+
+/*
+|--------------------------------------------------------------------------
+| File Stream Modes
+|--------------------------------------------------------------------------
+|
+| These modes are used when working with fopen()/popen()
+|
+*/
+
+define('FOPEN_READ',							'rb');
+define('FOPEN_READ_WRITE',						'r+b');
+define('FOPEN_WRITE_CREATE_DESTRUCTIVE',		'wb'); // truncates existing file data, use with care
+define('FOPEN_READ_WRITE_CREATE_DESTRUCTIVE',	'w+b'); // truncates existing file data, use with care
+define('FOPEN_WRITE_CREATE',					'ab');
+define('FOPEN_READ_WRITE_CREATE',				'a+b');
+define('FOPEN_WRITE_CREATE_STRICT',				'xb');
+define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
+
+
+/* End of file constants.php */
+/* Location: ./application/config/constants.php */

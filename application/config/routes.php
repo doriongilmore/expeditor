@@ -38,11 +38,8 @@
 |
 */
 
-$route['default_controller']  = "accueil";
-
-$route['authentification']  = "accueil/authentification";
-
-
+$route['default_controller'] = "welcome";
+$route['404_override'] = '';
 
 
 /* End of file routes.php */

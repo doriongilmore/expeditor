@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database','entete_tableau','form_validation');
+$autoload['libraries'] = array();
 
 
 /*
@@ -64,7 +64,7 @@ $autoload['libraries'] = array('database','entete_tableau','form_validation');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('message','form', 'url', 'html', 'inflector', 'array', 'text', 'date');
+$autoload['helper'] = array();
 
 
 /*
@@ -80,7 +80,7 @@ $autoload['helper'] = array('message','form', 'url', 'html', 'inflector', 'array
 |
 */
 
-$autoload['config'] = array('ldap' ,'entete_tableau');
+$autoload['config'] = array();
 
 
 /*

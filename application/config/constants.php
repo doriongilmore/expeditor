@@ -1,24 +1,4 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/**
- * Url de l'application
- */
-$name = explode('/', $_SERVER['SERVER_NAME']);
-$protocole = ((preg_match('/authentification/',$_SERVER['REQUEST_URI']) == 1)?'https':'http');
-define('PROTOCOLE',$protocole);
-
-define('NOM_APPLICATION','EXPEDITOR');
-
-// Attention la variable NOM_APPLICATION ne correspond pas toujours dans ce cas le faire manuellement
-define('APPLICATION_URI', PROTOCOLE.'://' . $name[0] . '/expeditor');
-define('NUM_VERSION','1.0');
-
-//define('PROFIL_UTILISATEUR',1);
-define('PROFIL_1',1);
-define('PROFIL_2',2);
-
-
-
-
 
 /*
 |--------------------------------------------------------------------------

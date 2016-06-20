@@ -1,9 +1,5 @@
 <?php
-  /**
-   * Application strict des standards : initialisation du fuseau horaire.
-   */
-  if(! ini_get('date.timezone') )
-    date_default_timezone_set(date_default_timezone_get());
+
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
@@ -18,21 +14,11 @@
  *     development
  *     testing
  *     production
- *     maintenance
  *
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-  define('ENVIRONMENT', 'development');
-  //define('ENVIRONMENT', 'production');
-  //define('ENVIRONMENT', 'maintenance');
-
-/**
- * Lorsque l'application est en maintenance, il suffit de rentrer les ips autorisÃ©es
- * Ã  visualiser l'application dans le tableau $arrIps.
- * Sinon redirection vers la page de maintenance.
- */
- 
+	define('ENVIRONMENT', 'development');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
@@ -42,33 +28,22 @@
  * By default development will show errors but testing and live will hide them.
  */
 
-if (defined('ENVIRONMENT')) {
-    switch (ENVIRONMENT) {
-        case 'development':
-            ini_set('display_errors', 1);
-            error_reporting(1);
-            break;
+if (defined('ENVIRONMENT'))
+{
+	switch (ENVIRONMENT)
+	{
+		case 'development':
+			error_reporting(E_ALL);
+		break;
 
-        case 'testing':
-            break;
+		case 'testing':
+		case 'production':
+			error_reporting(0);
+		break;
 
-        case 'production':
-            ini_set('display_errors', 0);
-            error_reporting(0);
-            break;
-
-        case 'maintenance':
-            if (in_array($_SERVER['HTTP_X_FORWARDED_FOR'], $arrIps))
-                error_reporting(-1);
-            else {
-                include_once('./maintenance.php');
-                exit();
-            }
-            break;
-
-        default:
-            exit('The application environment is not set correctly.');
-    }
+		default:
+			exit('The application environment is not set correctly.');
+	}
 }
 
 /*
@@ -97,7 +72,8 @@ if (defined('ENVIRONMENT')) {
  * NO TRAILING SLASH!
  *
  */
-$application_folder =  'application';
+	$application_folder = 'application';
+
 /*
  * --------------------------------------------------------------------
  * DEFAULT CONTROLLER
@@ -122,7 +98,7 @@ $application_folder =  'application';
 	// if your controller is not in a sub-folder within the "controllers" folder
 	// $routing['directory'] = '';
 
-	// The controller class file name.  Example:  Mycontroller.php
+	// The controller class file name.  Example:  Mycontroller
 	// $routing['controller'] = '';
 
 	// The controller function you wish to be called.
@@ -187,6 +163,7 @@ $application_folder =  'application';
 	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
 
 	// The PHP file extension
+	// this global constant is deprecated.
 	define('EXT', '.php');
 
 	// Path to the system folder
@@ -222,8 +199,7 @@ $application_folder =  'application';
  * And away we go...
  *
  */
-        
-require_once BASEPATH.'core/CodeIgniter'.EXT;
+require_once BASEPATH.'core/CodeIgniter.php';
 
 /* End of file index.php */
 /* Location: ./index.php */

@@ -10,22 +10,19 @@
 |
 |	http://example.com/
 |
-| If this is not set then CodeIgniter will guess the protocol, domain and
-| path to your installation.
+| WARNING: You MUST set this value!
+|
+| If it is not set, then CodeIgniter will try guess the protocol and path
+| your installation, but due to security concerns the hostname will be set
+| to $_SERVER['SERVER_ADDR'] if available, or localhost otherwise.
+| The auto-detection mechanism exists only for convenience during
+| development and MUST NOT be used in production!
+|
+| If you need to allow multiple domains, remember that this file is still
+| a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url']     = 'http://10.12.200.4/expeditor';//EN LOCAL
-
-
-/*
-|--------------------------------------------------------------------------
-| Real Base Site URL
-|--------------------------------------------------------------------------
-|
-| Variable qui permet à MY_Controller de stocker base _url avant modification.
-|
-*/
-$config['real_base_url']	= '';
+$config['base_url'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +34,7 @@ $config['real_base_url']	= '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -68,8 +65,7 @@ $config['uri_protocol']	= 'AUTO';
 | http://codeigniter.com/user_guide/general/urls.html
 */
 
-$config['url_suffix'] = '.html';
-//$config['url_suffix'] = '';
+$config['url_suffix'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -81,7 +77,7 @@ $config['url_suffix'] = '.html';
 | than english.
 |
 */
-$config['language']	= 'french';
+$config['language']	= 'english';
 
 /*
 |--------------------------------------------------------------------------
@@ -236,7 +232,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'fdaef28f49d03fa69b2848062144175d';
+$config['encryption_key'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -256,18 +252,15 @@ $config['encryption_key'] = 'fdaef28f49d03fa69b2848062144175d';
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name']     = 'e_dc_ouest';
-$config['sess_expiration']      = 14400;//4 heures
+$config['sess_cookie_name']		= 'ci_session';
+$config['sess_expiration']		= 7200;
 $config['sess_expire_on_close']	= FALSE;
-$config['sess_encrypt_cookie']	= TRUE;
-$config['sess_use_database']    = TRUE;
-$config['sess_table_name']      = 'ci_sessions';
-$config['sess_match_ip']        = TRUE;
+$config['sess_encrypt_cookie']	= FALSE;
+$config['sess_use_database']	= FALSE;
+$config['sess_table_name']		= 'ci_sessions';
+$config['sess_match_ip']		= FALSE;
 $config['sess_match_useragent']	= TRUE;
 $config['sess_time_to_update']	= 300;
-
-
-$config['global_session'] = 'dco_global_session';
 
 /*
 |--------------------------------------------------------------------------
@@ -281,9 +274,7 @@ $config['global_session'] = 'dco_global_session';
 |
 */
 $config['cookie_prefix']	= "";
-
-$config['cookie_domain']     = '10.12.200.4';//EN LOCAL
-
+$config['cookie_domain']	= "";
 $config['cookie_path']		= "/";
 $config['cookie_secure']	= FALSE;
 
@@ -296,7 +287,7 @@ $config['cookie_secure']	= FALSE;
 | COOKIE data is encountered
 |
 */
-$config['global_xss_filtering'] = TRUE;
+$config['global_xss_filtering'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -310,10 +301,10 @@ $config['global_xss_filtering'] = TRUE;
 | 'csrf_cookie_name' = The cookie name
 | 'csrf_expire' = The number in seconds the token should expire.
 */
-$config['csrf_protection']  = TRUE;
-$config['csrf_token_name']  = 'ci_csrf_token';
-$config['csrf_cookie_name'] = 'csrf_expeditor_dc';
-$config['csrf_expire']      = 14400;
+$config['csrf_protection'] = FALSE;
+$config['csrf_token_name'] = 'csrf_test_name';
+$config['csrf_cookie_name'] = 'csrf_cookie_name';
+$config['csrf_expire'] = 7200;
 
 /*
 |--------------------------------------------------------------------------
@@ -372,7 +363,7 @@ $config['rewrite_short_tags'] = FALSE;
 | Comma-delimited, e.g. '10.0.1.200,10.0.1.201'
 |
 */
-$config['proxy_ips'] = '127.0.0.1';
+$config['proxy_ips'] = '';
 
 
 /* End of file config.php */

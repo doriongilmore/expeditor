@@ -57,8 +57,7 @@ $foreign_characters = array(
 	'/Ĳ/' => 'IJ',
 	'/ĳ/' => 'ij',
 	'/Œ/' => 'OE',
-	'/ƒ/' => 'f',
-	'/(|)|[|]/' => ''
+	'/ƒ/' => 'f'
 );
 
 /* End of file foreign_chars.php */

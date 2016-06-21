@@ -2,11 +2,13 @@
 
 // etat et profils
 
-define('ETAT_EN_COURS', 0);
-define('ETAT_ATTENTE', 0);
 
-define('PROFIL_EMPLOYE', 0);
-define('PROFIL_MANAGER', 0);
+define('ETAT_ATTENTE', 1);
+define('ETAT_EN_COURS', 2);
+define('ETAT_TERMINE', 3);
+
+define('PROFIL_EMPLOYE', 1);
+define('PROFIL_MANAGER', 2);
 
 
 

@@ -33,7 +33,7 @@ class M_Article extends MY_Model{
     }
     
     public function getAll(){
-         return $this->M_bdArticle->getAll();
+         return $this->array_initialisation($this->M_bdArticle->getAll());
         
     }
         

@@ -27,6 +27,15 @@ class M_Client extends MY_Model{
       
     public function __construct() {
         parent::__construct();
+         $this->load->model('table/M_bdClient');
+    }
+
+    public function initialisation($tabInfo) {
+        return parent::initialisation($tabInfo);
+    }
+    
+    public function getById($id){
+       return $this->M_bdClient->getById($id);
     }
     
 }

@@ -29,13 +29,16 @@ class MY_Model extends CI_Model
      */
     public function initialisation($tabInfo){
         $clone = clone $this ;
+        if (is_null($tabInfo))
+            return null;
         foreach ($clone as $key => $value)
             if (is_array($tabInfo))
-                $clone->set($key, $tabInfo[$key] );
+                $clone->set($key, (array_key_exists($key, $tabInfo)?$tabInfo[$key]:null) );
             else{
                 if ($tabInfo instanceof MY_Model) $clone->set($key, $tabInfo->get($key) );
                 else{
-                    $tabInfo = (array)$tabInfo; $clone->set($key, $tabInfo[$key] );
+                    $tabInfo = (array)$tabInfo; 
+                    $clone->set($key, (array_key_exists($key, $tabInfo)?$tabInfo[$key]:null) );
                 }
             }
         return $clone;

@@ -40,6 +40,18 @@ class M_bdCommandes extends MY_Model{
          return parent::update($this->main_table, $data);   
     }
     
+    public function getFirstCommande() {
+       $this->db->select('*', false)
+                ->from('commande')
+                ->where('date_demande = (SELECT MIN(date_demande) FROM (`commande`))')
+                ;
+                
+        $res = $this->db->get()->result();
+        if (!empty($res)) {
+            return $res[0];   
+        }
+        return null;
+    }
  /*   public function getByClient($client){
         $this->db->select('*')
                 ->from('commande')

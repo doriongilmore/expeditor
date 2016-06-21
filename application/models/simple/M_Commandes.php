@@ -25,6 +25,31 @@ class M_Commandes extends MY_Model{
       
     public function __construct() {
         parent::__construct();
+         $this->load->model('table/M_bdCommandes');
+    }
+
+//    public function initialisation($tabInfo) {
+//        return parent::initialisation($tabInfo);
+//    }
+    
+    
+    public function get($key) {
+        if (array_key_exists($key, get_object_vars($this))) 
+            return parent::get($key);
+        switch ($key) {
+            case 'client':
+                $id = $this->get('id_client');
+                $this->load->model('simple/M_Client');
+                $cli = $this->M_Client->getById($id);
+//                var_dump($cli);
+                return $cli;
+            default:
+                break;
+        }
     }
     
+    public function getFirstCommande(){
+        $req = $this->M_bdCommandes->getFirstCommande();
+        return $this->initialisation($req);
+    }
 }

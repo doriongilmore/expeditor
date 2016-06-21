@@ -3,7 +3,7 @@
 <div id="MainNavigation">
     <div class="wrap">
         <ul class="mainMenu cssonly" id="Menu1">
-            <li><a href="accueil" class="home">Accueil</a></li>
+            <li><a href="" class="">Accueil</a></li>
                
 	    <?php
 	if (isset($user) && !is_null($user)) {
@@ -13,8 +13,8 @@
                 <ul class="col">
                     <li><span></span>
                         <ul>
-                                <li><a href="export">Export des données</a></li>
-                                <li><a href="statistiques">Statistiques</a></li>
+                            <li><a href="export">Export des données</a></li>
+                            <li><a href="statistiques">Statistiques</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -29,7 +29,7 @@
                 <ul class="col">
                     <li><span></span>
                         <ul>
-                                <li><a href="exportManager">Export des données</a></li>
+                            <li><a href="exportManager">Export des données</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -44,8 +44,8 @@
                 <ul class="col">
                     <li><span></span>
                         <ul>
-                                <li><a href="habilitation">Habilitations</a></li>
-                                <li><a href="affect">Affectations</a></li>
+                            <li><a href="habilitation">Habilitations</a></li>
+                            <li><a href="affect">Affectations</a></li>
                         </ul>
                     </li>
                 </ul>

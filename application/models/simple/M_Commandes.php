@@ -17,8 +17,11 @@ class M_Commandes extends MY_Model{
     public $id_commande = null;
     public $id_client = null;
     public $num_commande = null;
-    public $date = null;
+    public $date_demande = null;
+    public $date_traitement = null;
+    public $id_etat = null;    
     public $etat = null;    
+    public $id_utilisateur_traite = null;    
       
     public function __construct() {
         parent::__construct();

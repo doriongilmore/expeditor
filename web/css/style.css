@@ -321,7 +321,7 @@ body.template { text-align: center; font-size: 62.5%; font-family: Arial, Helvet
 .wrap>ul.navMenu>li:hover>a { background-position: 0 100%; }
 .wrap>ul>li { display: block; float: left; height: auto; overflow:hidden; /* padding-top:10px; height:31px; -> Attention JS */ }
 .wrap>ul.navMenu>li { width: 170px; float: right; }
-.wrap>ul>li>a { display: block; height: auto; /* height:31px; -> Attention JS */ }
+/*.wrap>ul>li>a { display: block; height: auto;  height:31px; -> Attention JS  }*/
 /* SUB MENU */
 .wrap>ul>li>ul { position: absolute; top: 41px; padding: 14px 7px; display: none; width: 40%; z-index: 17; background: #FFF; height: auto; -moz-box-shadow: 0 2px 5px 1px #BFBFBF; -webkit-box-shadow: 0 2px 5px 1px #BFBFBF; -o-box-shadow: 0 2px 5px 1px #BFBFBF; -ms-box-shadow: 0 2px 5px 1px #BFBFBF; box-shadow: 0 2px 5px 1px #BFBFBF; -ms-border-radius: 3px; -o-border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
 /*.wrap>ul>li>ul { position: absolute; top: 41px; right: 0; padding: 14px 7px; display: none; width: 936px; z-index: 17; background: #FFF; height: auto; -moz-box-shadow: 0 2px 5px 1px #BFBFBF; -webkit-box-shadow: 0 2px 5px 1px #BFBFBF; -o-box-shadow: 0 2px 5px 1px #BFBFBF; -ms-box-shadow: 0 2px 5px 1px #BFBFBF; box-shadow: 0 2px 5px 1px #BFBFBF; -ms-border-radius: 3px; -o-border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }*/
@@ -368,7 +368,7 @@ body.template { text-align: center; font-size: 62.5%; font-family: Arial, Helvet
 /* CONTENT  */
 /* #################################################################################################### */
 
-#Page #Content { width: 980px; _width: 990px; margin: 0 auto; clear: both; padding: 0; font-size: 1em; line-height: 1.46em; position: relative; }
+#Page #Content { width: 70%; _width: 70%; margin: 0 auto; clear: both; padding: 0; font-size: 1em; line-height: 1.46em; position: relative; }
 /*#Page .shadow { display: none; float: left; width: 100%; height: 5px; position: absolute; bottom: -5px; left: 0; z-index: 3; background: url("../img/t1_shadow.png") 50% 0 no-repeat; }*/
 .entity { color: #E85B28; font-weight: bold; }
 .entity .date { color: #E85B28; display: inline; font-weight: normal; margin-left: 5px; }

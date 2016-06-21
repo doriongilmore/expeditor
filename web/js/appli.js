@@ -33,6 +33,18 @@
     });
 
         */
-        
-        
+   $(document).on('ready', function(){
+       
+       
+       
+       $('.commande_qte_relle').on('change', function(){
+           var total = 0;
+           $('.commande_qte_relle').each(function(){
+               var poids = $(this).parent().attr('poids');
+               var qte = $(this).val();
+               total += poids * qte;
+           });
+           $('#commande_poids_total').val(total);
+       });
+   });
         

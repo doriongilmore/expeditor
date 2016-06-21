@@ -43,7 +43,7 @@ class M_Utilisateur extends MY_Model{
      
        public function getById($id){
            
-        $res = $this->M_dbUtilisateur->getById($id);
+        $res = $this->M_bdUtilisateur->getById($id);
         if ($res === null) return null;
         
        return  $this->initialisation($res);

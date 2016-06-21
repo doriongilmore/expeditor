@@ -56,4 +56,9 @@ class M_Utilisateur extends MY_Model{
         return $this->M_bdUtilisateur->getAllEmploye();
     }
     
+    public function getAllStatCommande(){
+         return $this->M_bdUtilisateur->getAllStatCommande();
+        
+    }
+            
 }

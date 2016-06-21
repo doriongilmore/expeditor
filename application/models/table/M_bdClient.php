@@ -12,5 +12,27 @@
  * @author Administrateur
  */
 class M_bdClient {
-    //put your code here
+    
+    public function __construct() {
+        
+        parent::__construct();
+    } 
+    
+    public function getById($id){
+       $this->db->select('*')
+                ->from('client')
+                ->where('id_client', $id);
+                
+        $res = $this->db->get()->result();
+        return $res[0];   
+    }
+    
+    public function getByNom($nom){
+        $this->db->select('*')
+                ->from('client')
+                ->where('nom', $nom);
+                
+        $res = $this->db->get()->result();
+        return $res[0];   
+    }
 }

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class C_Manager extends CI_Controller {
+class C_Manager extends MY_Controller {
 
 	/**
 	 * Index Page for this controller.

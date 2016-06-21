@@ -1,12 +1,21 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-// etat et constante
+// etat et profils
 
 define('ETAT_EN_COURS', 0);
 define('ETAT_ATTENTE', 0);
 
 define('PROFIL_EMPLOYE', 0);
 define('PROFIL_MANAGER', 0);
+
+
+
+// Consantes d'application
+define('NOM_APPLICATION','EXPEDITOR');
+define('NUM_VERSION','0.0');
+$name = explode('/', $_SERVER['SERVER_NAME']);
+define('APPLICATION_URI', 'http://' . $name[0] . '/r2d_expeditor');
+
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes

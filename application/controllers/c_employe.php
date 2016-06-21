@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class C_Employe extends CI_Controller {
+class C_Employe extends MY_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -17,9 +17,13 @@ class C_Employe extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function affichage()
 	{
-            $this->load->view('welcome_message');
+//            $this->load->model('simple/m_utilisateur');
+//            $this->m_utilisateur->getCommandeATraiter();
+            
+            
+            $this->load->view('employe/affichage_commande');
 	}
 }
 

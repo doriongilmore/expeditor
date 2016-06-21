@@ -23,7 +23,7 @@ class M_Article extends MY_Model{
       
     public function __construct() {
         parent::__construct();
-        $this->load->model('table/M_bdArticles');
+        $this->load->model('table/M_bdArticle');
     }
     
     

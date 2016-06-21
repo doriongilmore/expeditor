@@ -33,8 +33,8 @@ class M_Utilisateur extends MY_Model{
          switch ($key) {
             case 'profil':
                $id = $this->get('id_profil');
-                $this->load->model('simple/M_Client');
-                $cli = $this->M_Client->getById($id);
+                $this->load->model('simple/M_Profil');
+                $cli = $this->M_Profil->getById($id);
              
             default:
             break;

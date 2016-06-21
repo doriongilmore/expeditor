@@ -30,7 +30,6 @@ class M_Profil extends MY_Model{
      
      
        public function getById($id){
-           
         $res = $this->M_bdProfil->getById($id);
         if ($res === null) return null;
         

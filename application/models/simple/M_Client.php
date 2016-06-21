@@ -43,4 +43,9 @@ class M_Client extends MY_Model{
        return $this->initialisation($this->M_bdClient->getById($id));
     }
     
+     public function getAll(){
+         return $this->M_bdClient->getAll();
+        
+    }
+    
 }

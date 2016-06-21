@@ -24,6 +24,10 @@ class M_bdUtilisateur extends MY_Model{
       return parent::getById($this->main_table, $id);
     }
     
+      public function getAll(){
+       return parent::getAll($this->main_table);
+    }
+    
     public function getByLoginPassword($login,$password){
         $this->db->select('*')
                 ->from('utilisateur')

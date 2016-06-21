@@ -38,6 +38,10 @@ class M_bdClient extends MY_Model {
         return $this->db->get()->result();
     }
     
+      public function getAll(){
+       return parent::getAll($this->main_table);
+    }
+    
      public function insert($data){
         return parent::insert($this->main_table, $data);
     }

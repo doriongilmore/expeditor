@@ -21,6 +21,10 @@ class M_bdProfil extends MY_Model{
         parent::__construct();
     } 
     
+    public function getAll(){
+       return parent::getAll($this->main_table);
+    }
+    
     public function getById($id){
      return parent::getById($this->main_table, $id);
     }

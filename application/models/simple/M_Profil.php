@@ -36,6 +36,10 @@ class M_Profil extends MY_Model{
        return  $this->initialisation($res);
     }
     
+     public function getAll(){
+         return $this->M_bdProfil->getAll();
+        
+    }
     
     
 }

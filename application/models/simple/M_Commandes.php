@@ -55,4 +55,10 @@ class M_Commandes extends MY_Model{
         $req = $this->M_bdCommandes->getFirstCommande();
         return $this->initialisation($req);
     }
+
+     public function getAll(){
+         return $this->M_bdCommandes->getAll();
+        
+    }
+    
 }

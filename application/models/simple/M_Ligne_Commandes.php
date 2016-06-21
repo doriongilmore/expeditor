@@ -44,4 +44,9 @@ class M_Ligne_Commandes  extends MY_Model{
                 break;
         }
      }
+     
+      public function getAll(){
+         return $this->M_bdLignesCommandes->getAll();
+        
+    }
 }

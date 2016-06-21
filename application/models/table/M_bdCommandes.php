@@ -24,6 +24,10 @@ class M_bdCommandes extends MY_Model{
      return parent::getById($this->main_table, $id);
     }
     
+      public function getAll(){
+       return parent::getAll($this->main_table);
+    }
+    
      public function getByNum($num){
       return parent::findBy($this->main_table,'num_commande', $num); 
     }

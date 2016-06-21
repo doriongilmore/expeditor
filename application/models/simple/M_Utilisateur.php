@@ -51,6 +51,11 @@ class M_Utilisateur extends MY_Model{
        return  $this->initialisation($res);
     }
     
+     public function getAll(){
+         return $this->M_bdUtilisateur->getAll();
+        
+    }
+    
     
     
 }

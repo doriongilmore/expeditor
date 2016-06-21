@@ -23,6 +23,10 @@ class M_bdLigneCommandes extends MY_Model{
       return parent::findBy($this->main_table,'id_commande', $id_commande);
     }
     
+      public function getAll(){
+       return parent::getAll($this->main_table);
+    }
+    
     public function __construct() {
         parent::__construct();
     }

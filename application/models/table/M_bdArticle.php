@@ -24,6 +24,10 @@ class M_bdArticle extends MY_Model {
        return parent::getById($this->main_table, $id);
     }
     
+    public function getAll(){
+       return parent::getAll($this->main_table);
+    }
+    
     public function getByNom($nom){
         return parent::findBy($this->main_table, 'nom', $nom);
     }

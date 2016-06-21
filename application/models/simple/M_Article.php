@@ -32,4 +32,10 @@ class M_Article extends MY_Model{
             return parent::get($key);
     }
     
+    public function getAll(){
+         return $this->M_bdArticle->getAll();
+        
+    }
+        
+    
 }

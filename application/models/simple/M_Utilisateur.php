@@ -41,9 +41,12 @@ class M_Utilisateur extends MY_Model{
                     
          }
      }
+    
+     public function delete($id) {
+         return $this->M_bdUtilisateur->delete($id);
+     }
      
-     
-       public function getById($id){
+    public function getById($id){
            
         $res = $this->M_bdUtilisateur->getById($id);
         if ($res === null) return null;

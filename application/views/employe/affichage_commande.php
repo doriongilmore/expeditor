@@ -15,11 +15,11 @@
         <form method="post" action="">
             <div id="Client" class="panel-title bloc">
                 <div class=""><label>Nom de la société :</label> 
-                    Fictive S.A.
-                    <?php // echo $user->get('nom_client'); ?>
+                    <?php echo $client->get('nom') . ' ' .$client->get('prenom') ; ?>
                 </div>
                 <div class=""><label>Adresse :</label> 
-                    <?php // echo $user->get('adresse'); ?>
+                    <?php echo $client->get('adresse_1') . ' ' .$client->get('adresse_2') .br() ; ?>
+                    <?php echo $client->get('code_postal') . ' ' .$client->get('ville') .br() ; ?>
                 </div>
             </div>
             <div id="Articles">

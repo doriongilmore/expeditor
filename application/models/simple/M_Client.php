@@ -17,8 +17,8 @@ class M_Client extends MY_Model{
     public $id_client = null;
     public $nom = null;
     public $prenom = null;
-    public $adresse1 = null;
-    public $adresse2 = null;
+    public $adresse_1 = null;
+    public $adresse_2 = null;
     public $code_postal = null;
     public $ville = null;
     public $telephone = null;
@@ -40,7 +40,7 @@ class M_Client extends MY_Model{
       }
     
     public function getById($id){
-       return $this->M_bdClient->getById($id);
+       return $this->initialisation($this->M_bdClient->getById($id));
     }
     
 }

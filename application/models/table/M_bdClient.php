@@ -21,11 +21,12 @@ class M_bdClient extends MY_Model {
     } 
     
     public function getById($id){
-       return parent::getById($this->main_table, $id);
+       $res = parent::getById($this->main_table, $id);
+       return $res;
     }
     
     public function getByNom($nom){
-         return parent::findBy($this->main_table,'nom', $nom); 
+         return parent::findBy($this->main_table, 'nom', $nom); 
     }
     
     

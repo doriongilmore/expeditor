@@ -32,6 +32,10 @@ class M_Article extends MY_Model{
             return parent::get($key);
     }
     
+    public function getById($id) {
+        return $this->initialisation($this->M_bdArticle->getById($id));
+    }
+    
     public function getAll(){
          return $this->array_initialisation($this->M_bdArticle->getAll());
         

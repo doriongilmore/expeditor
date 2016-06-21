@@ -43,9 +43,9 @@ class M_Commandes extends MY_Model{
                 $cli = $this->M_Client->getById($id);
                 return $cli;
             case 'lignes_commande':
-                $this->load->model('simple/M_Lignes_Commandes');
-                
-                break;
+                $this->load->model('simple/M_Ligne_Commandes');
+                $l = $this->M_Ligne_Commandes->getByIdCommande($this->get('id_commande'));
+                return $l;
             default:
                 break;
         }

@@ -28,12 +28,17 @@
                     <th>Articles</th><th>Quantité commandée</th><th>Quantité réelle</th>
                     </thead>
                     <tbody>
-                        <?php // foreach($articles as $m_article){}; ?>
-                        <tr>
-                            <td>Disque Dur interne 2.5 pouces</td>
-                            <td>5</td>
-                            <td poids="150"><input type="text" name="qte_relle" class="commande_qte_relle" value="0" /></td>
-                        </tr>
+                        <?php foreach($lignes as $m_ligne_commande){ 
+                            $m_article = $m_ligne_commande->get('article');
+                            ?>
+                            <tr>
+                                <td><?php echo $m_article->get('nom') ; ?></td>
+                                <td><?php echo $m_ligne_commande->get('quantite_demande') ; ?></td>
+                                <td poids="<?php echo $m_article->get('poids') ; ?>">
+                                    <input type="text" name="qte_relle" class="commande_qte_relle" value="0" />
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -45,7 +50,7 @@
     </div>
     <div class="input-group-addon">
         <label>Poids (en grammes)</label>
-        <input type="text" readonly="readonly" class="readonly" value="0" id="commande_poids_total"/>
+        <input type="text" readonly="readonly" class="readonly" value="300" id="commande_poids_total"/>
         
     </div>
     

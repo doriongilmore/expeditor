@@ -10,6 +10,7 @@ class C_Employe extends MY_Controller {
             
             $this->data['commande'] = $this->M_Commandes->getFirstCommande();
             $this->data['client'] = $this->data['commande']->get('client');
+            $this->data['lignes'] = $this->data['commande']->get('lignes_commande');
             $this->_loadView('employe/affichage_commande');
 	}
 }

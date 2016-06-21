@@ -38,15 +38,19 @@ class M_Ligne_Commandes  extends MY_Model{
             case 'article':
                 $id = $this->get('id_article');
                 $this->load->model('simple/M_Article');
-                $article = $this->M_Client->getById($id);
+                $article = $this->M_Article->getById($id);
                 return $article;
             default:
                 break;
         }
      }
      
-      public function getAll(){
-         return $this->M_bdLignesCommandes->getAll();
+    public function getAll(){
+        return $this->M_bdLigneCommandes->getAll();
+    }
+    
+    public function getByIdCommande($id) {
+        return $this->array_initialisation($this->M_bdLigneCommandes->getByCommandes($id));
         
     }
 }

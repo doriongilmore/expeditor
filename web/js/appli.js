@@ -43,7 +43,7 @@
                 $('#commande_poids_total').val(total);
             }
             else{
-                var total = 0;
+                var total = 300; // poids initial du carton
                 $('.commande_qte_relle').each(function(){
                     var poids = $(this).parent().attr('poids');
                     var qte = $(this).val();

@@ -22,7 +22,7 @@
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+$config['base_url']	= 'http://localhost/r2d_expeditor/index.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -232,7 +232,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'encryption_key';
 
 /*
 |--------------------------------------------------------------------------
@@ -303,7 +303,7 @@ $config['global_xss_filtering'] = FALSE;
 */
 $config['csrf_protection'] = FALSE;
 $config['csrf_token_name'] = 'csrf_test_name';
-$config['csrf_cookie_name'] = 'csrf_cookie_name';
+$config['csrf_cookie_name'] = 'csrfcookiename';
 $config['csrf_expire'] = 7200;
 
 /*

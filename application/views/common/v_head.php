@@ -11,15 +11,15 @@
     <?php
     
     ?>
-    <link rel="icon" type="image/png" href="/web/img/favicon.png" />
+    <link rel="icon" type="image/png" href="<?php echo APPLICATION_URI; ?>/web/img/favicon.png" />
     
     <title>ENI - <?php echo NOM_APPLICATION; ?></title>
 	
     <!-- Appel des CSS -->
-    <link href="<?php echo APPLICATION_URI; ?>/web/css/style.css" rel="stylesheet" type="text/css" media="screen" />  
+    <!--<link href="<?php echo APPLICATION_URI; ?>/web/css/style.css" rel="stylesheet" type="text/css" media="screen" />-->  
     
-    <link href="<?php echo APPLICATION_URI; ?>/web/css/site_blocsModulaires.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="<?php echo APPLICATION_URI; ?>/web/css/entete_tableau.css" rel="stylesheet" type="text/css" media="screen" />      
+<!--    <link href="<?php echo APPLICATION_URI; ?>/web/css/site_blocsModulaires.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<?php echo APPLICATION_URI; ?>/web/css/entete_tableau.css" rel="stylesheet" type="text/css" media="screen" />      -->
     <link href="<?php echo APPLICATION_URI; ?>/web/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />  
     <link href="<?php echo APPLICATION_URI; ?>/web/css/maLibrairie.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="<?php echo APPLICATION_URI; ?>/web/css/myStyle.css" rel="stylesheet" type="text/css" media="screen" />  

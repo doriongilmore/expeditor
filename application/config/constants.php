@@ -14,7 +14,7 @@ define('PROFIL_MANAGER', 0);
 define('NOM_APPLICATION','EXPEDITOR');
 define('NUM_VERSION','0.0');
 $name = explode('/', $_SERVER['SERVER_NAME']);
-define('APPLICATION_URI', 'http://' . $name[0] . '/r2d_expeditor');
+define('APPLICATION_URI', 'http://' . $name[0] . '/expeditor');
 
 /*
 |--------------------------------------------------------------------------

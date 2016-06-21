@@ -23,7 +23,7 @@ class C_Employe extends MY_Controller {
 //            $this->m_utilisateur->getCommandeATraiter();
             
             
-            $this->load->view('employe/affichage_commande');
+            $this->_loadView('employe/affichage_commande');
 	}
 }
 

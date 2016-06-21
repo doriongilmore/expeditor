@@ -10,9 +10,9 @@
                     </li>
                     <li>
                         <?php 
-                        if($this->session->userdata('identifiant'))
-                            echo '<a href="connexion/deconnexion">Se deconnecter</a>';
-                        else
+//                        if($this->session->userdata('identifiant'))
+//                            echo '<a href="connexion/deconnexion">Se deconnecter</a>';
+//                        else
                             echo '<a href="connexion/authentification">Se connecter</a>';
                         ?>
                     </li>

@@ -1,0 +1,54 @@
+/* 
+    Document   : entete_tableau
+    Created on : 21 janv. 2014, 14:19:34
+    Author     : guillaume gobled
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+.page {
+    list-style: none;
+    margin: 0;
+    padding: 0;  
+    height: 32px !important;
+
+}
+.page li {
+    float:left;
+    margin: 5px;
+    padding: 3px 6px;
+    border:solid 1px #DDD;
+    cursor: pointer;
+}
+.page li:hover {
+    background-color: #ff9f33;
+    border-color: #FF8900;
+    color:#FFF;
+} 
+.page li.current,
+.page li.current:hover{
+    background-color: #4882BE;
+    border-color:#005BBB;
+    color:#FFF;
+    cursor: default;
+}
+
+.page li.nothing,
+.page li.nothing:hover{
+    background-color: transparent;
+    border:solid 1px #DDD;
+    color:#000;
+    cursor: not-allowed;
+}
+
+.entete_page
+{
+    width: 99%;
+    padding: 10px 0 10px 10px;
+}
+
+.tri_thead
+{
+    cursor: pointer;
+}

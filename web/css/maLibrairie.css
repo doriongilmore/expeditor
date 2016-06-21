@@ -1,0 +1,604 @@
+/*************************************************************
+*********************    TUILES       ************************ 
+*************************************************************/
+
+.tuile
+{
+    width : 250px;
+    height : 150px;
+    box-shadow: 1px 1px 5px #275ba3;
+    margin: 0% 0% 2% 2%;
+    text-align: center;
+    float: left;
+    overflow: hidden;
+}
+
+.tuile:hover
+{
+    background-color: #275ba3;
+    color: white;
+}
+
+.tuile label
+{
+    font-size: x-large;
+    margin : 28% 0 0 0;
+    float: left;
+    text-align: center;
+    min-width: 100%;
+}
+
+.tuile_active
+{
+    background-color: #275ba3;
+    color: white;
+}
+
+/*************************************************************
+*********************    TABLEAU      ************************ 
+*************************************************************/
+.content table
+{
+    margin: 10px;
+    width: 98%;
+}
+
+.tr_orange
+{
+    background-color: #FFD393;
+}
+
+.tr_orange td, .tr_rouge td, .tr_vert td
+{
+    background-color: transparent;
+}
+
+.tr_rouge
+{
+    background-color: #ffa37f;
+}
+
+.tr_vert
+{
+    background-color: #a2ff9f;
+}
+
+.numeric
+{
+    text-align: right;
+}
+
+.curseur{cursor: pointer !important;}
+
+/* Entete du tableau */
+
+
+
+.page {
+    list-style: none;
+    margin: 0;
+    padding: 0;  
+    height: 32px !important;
+
+}
+.page li {
+    float:left;
+    margin: 5px;
+    padding: 3px 6px;
+    border:solid 1px #DDD;
+    cursor: pointer;
+}
+.page li:hover {
+    background-color: #ff9f33;
+    border-color: #FF8900;
+    color:#FFF;
+} 
+.page li.current,
+.page li.current:hover{
+    background-color: #4882BE;
+    border-color:#005BBB;
+    color:#FFF;
+    cursor: default;
+}
+
+.page li.nothing,
+.page li.nothing:hover{
+    background-color: transparent;
+    border:solid 1px #DDD;
+    color:#000;
+    cursor: not-allowed;
+}
+
+.entete_page
+{
+    width: 97%;
+    margin: 0 0 0 1%!important;
+    padding: 10px 0 10px 10px;
+}
+
+.tri_thead
+{
+    cursor: pointer;
+}
+
+/*************************************************************
+*********************    Graph      ************************ 
+*************************************************************/  *
+.container_graph:after {
+  content: ""; /* Important, sinon l'élément n'est pas généré. */
+  display: table;
+  clear: both;
+}
+
+.container_graph{
+    margin: 0 1% 2% 1%;
+    padding: 2% 2% 2% 2%;
+}
+.container_graph h3{margin-bottom: 5px;}
+.container_graph span{position: relative;}
+.container_graph .float_gauche{float: left;}
+.container_graph .float_droit{float: right;}
+
+#container_stat{width:668px; float:right;}
+#container_stat .group{margin:5px; padding : 0;}
+
+
+.cinq_pourc{width: 5%;}
+.dix_pourc{width: 10%;}
+.vingt_pourc{width: 20%;}
+.quarante_pourc{width: 40%;}
+.quatre_vingt_pourc{width: 80%;}
+
+.occultant{width: 100%;height: 100%; opacity: 0.5; background-color: grey; position: absolute; z-index: 1000;}
+#fork {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+}
+
+.graph_canvas
+{
+    float: left;
+/*    margin-left: 16%;*/
+}
+
+.legend {
+    width: 40%;
+    border: 1px solid black;
+    float: left;
+/*    margin-left: 7%;
+    margin-top: 4%;*/
+    margin : 0 0 4% 7%;
+}
+
+.legend .title {
+    display: block;
+    margin: 0.5em;
+    border-style: solid;
+    border-width: 0 0 0 1em;
+    padding: 0 0.3em;
+}
+
+#graph_legend span
+{
+    cursor: pointer;
+}
+
+.libelle_stat_ie{font-style: italic;margin-left: 30px;}
+
+/*************************************************************
+************    Gestion visuelle contenue     **************** 
+*************************************************************/
+
+.affichage_accordeon{
+    cursor: pointer;
+}
+
+/*************************************************************
+****************   Gestion des messages     ****************** 
+*************************************************************/
+.error, .valid, .info{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: black;
+    padding: 10px;
+    font-size: 13px; 
+    font-weight: bold; 
+    width: 80%;
+    margin: 2% 0 2% 10%;
+}
+
+.error{
+    background: -moz-linear-gradient( bottom, #ffefef, #ff5858);
+    background-color: #ff5858; 
+}
+
+.info{
+    background: -moz-linear-gradient( bottom, #fff7e5, #FFB504);
+    background-color: #FFB504; 
+}
+.valid{
+    background: -moz-linear-gradient( bottom, #f3faf3, #7ccf7a);
+    background-color: #7ccf7a; 
+}
+
+.invisible{
+    display: none;
+}
+
+/*************************************************************
+**********   Gestion de l'écran de chargement     ************ 
+*************************************************************/
+#progress_bar{
+    position: fixed;
+    top: 45%; 
+    left: 35%;height: 40px;width: 20%;opacity: 1;text-align: center;}
+#progress_bar .ui-progressbar-value {
+    background-color: #6f9cdc;/*#275ba3;*/
+}
+
+/*************************************************************
+*********   Gestion de la barre de progression     *********** 
+*************************************************************/
+.progression
+{
+	    background-color: #005bbb;
+}
+
+.precent
+{
+	    color: white;
+	    display: block;
+	    text-align: center;
+}
+
+.bar, .progression
+{
+	    display: block;
+	    height: 17px;
+	    width: 150px;
+            
+	 
+	    -moz-border-radius: 15px;
+	    -webkit-border-radius: 15px;
+	    -o-border-radius: 15px;
+	    border-radius: 15px;
+}
+
+.bar
+{
+            background-color: white;
+	    margin: 0 0 5px;
+	    -moz-box-shadow: 1px 1px 3px #000;
+	    -webkit-box-shadow: 1px 1px 3px #000;
+	    -o-box-shadow: 1px 1px 3px #000;
+	    box-shadow: 1px 1px 3px #000;
+}
+
+
+/*************************************************************
+*********************    Form Helper      ******************** 
+*************************************************************/
+
+
+
+form .form_row .label_field{
+    width:200px; 
+    float: left;
+}
+form .form_row label{   
+    width:200px; 
+    font-weight: bold;
+ }
+form .form_row{  
+  clear: both;
+/*  overflow: hidden;*/
+/*  margin: 7px 0 0 0 ;*/
+  padding: 7px 0 0 0 ;
+}
+form .form_row .field{  
+    position: relative;  
+    float: left;
+    width :60%;
+    margin-left: 10px;
+}
+
+form .form_row .field .date,
+form .form_row .field .heure{width: 100px; color: black}
+form .form_row .field .ui-datepicker-trigger{vertical-align: top; margin-left:2px;}
+form .form_row .field img{vertical-align: bottom; margin-left:2px;}
+form .form_row .field .heure{margin-left: 20px;}
+
+#container_habilitation img{vertical-align: bottom; margin-left:2px;}
+
+form .form_row .field a:visited{color:#005BBB}
+form .form_row .field a{color:#005BBB}
+
+form .form_row .field select,
+form .form_row .field textarea{width: 300px;}
+form .form_row .field textarea{height: 50px;resize: none;}
+
+form .form_row .field #checkbox{width: 0px;margin-top: -50px !important; }
+
+form button{margin: 2%;margin-left:40%;}
+form .submit{margin: 0 50px; width: 110px;}
+
+.date_habilitation
+{
+    margin: 0 0 0 50px;
+}
+.label_habilitation 
+{
+    width: 100%;
+    height: 50px;
+}
+.label_habilitation .field label
+{
+    margin: 0 70px 0 90px;
+}
+
+.label_habilitation label
+{
+    margin: 0 0 0 70px;
+}
+
+.checkBox_habilitation
+{
+    margin: 0 20px 0 0;
+}
+
+div.autocompletion{
+  width:300px;
+/*  position: absolute!important;*/
+}
+div.autocompletion input{
+  width: 100%;
+  position: absolute;
+}
+div.autocompletion select{
+/*  visibility: hidden;*/
+  width: 100%;
+  height: 300px;
+  display: none;
+  float: left;
+  margin: 20px 0 0 0; 
+  position: absolute;
+  z-index: 1;
+}
+
+#container_habilitation
+{
+    overflow: visible;
+    width:100%; 
+    float:right;
+}
+
+#container_habilitation .autocompletion
+{
+/*    margin: 0 0 0 15%;*/
+    float: left;
+    height: 10px;
+}
+
+#container_habilitation label
+{
+    width: 125px;
+/*    float: left;*/
+}
+.button{width: 125px;float: right; margin: 15px}
+
+/*************************************************************
+************************    Common      ********************** 
+*************************************************************/
+.group
+{
+    margin : 0 0 1% 2%;
+}
+
+#container_connexion
+{
+    width: 400px; 
+    margin: 50px 0 50px 23%;
+}
+#container_connexion #connect
+{
+    margin: 10px 0 10px 31%;
+}
+#container_connexion input,#container_connexion label
+{
+    width: 150px; 
+}
+
+#MainNavigation .wrap .mainMenu li ul li{margin-left: 15px;}
+
+#Content .content{margin: 10px 15px -5px 15px !important;}
+
+.non_affecte{color : red;}
+
+.container_button{ margin: 7px; text-align: center;}
+
+.taille_max{width: 100%;}
+
+.titre{font-weight: bold; height: 100px;}
+.button{width: 125px;float: right; margin: 15px}
+.button_ancre{width: 125px; margin: 15px; margin-left: 80%;}
+.relance{float: right; margin-top: 25px}
+.error{background-color: #ff5858; color: black;padding: 10px;font-size: 11px; width: 80%;margin-left: 10%;}
+.valid{background-color: #7ccf7a; color: black;padding: 10px;font-size: 11px; width: 80%;margin-left: 10%;}
+.cinq_pourc{width: 5%;}
+.dix_pourc{width: 10%;}
+.vingt_pourc{width: 20%;}
+.quarante_pourc{width: 40%;}
+.quatre_vingt_pourc{width: 80%;}
+
+#infos_titles h2{color:black;}
+#page_erreur{margin-left: 10%;}
+#page_erreur .content_block{margin: 5px;}
+.btn_redim{cursor: pointer;}
+
+
+.curseur{cursor: pointer !important;}
+
+legend a img{vertical-align: bottom;}
+
+#fleche_droite, #fleche_droite_presta{position:fixed; top:40%; right:100px;}
+#fleche_gauche, #fleche_gauche_presta{position:fixed; top:40%; left:100px;}
+
+#container_connexion
+{
+    width: 400px; 
+    margin: 50px 0 50px 23%;
+}
+#container_connexion input,#container_connexion label
+{
+    width: 150px; 
+}
+
+#container_connexion #connect
+{
+    margin: 10px 0 10px 31%;
+}
+
+#container_traitement_prestation_masse{width:100%; float: right;}
+#container_reaffectation{width:100%; float: right;}
+#tableau_reeafectation_masse{width:100%; float: right;}
+
+#container_recherche_prestation{ width:100%;}
+#container_recherche_prestation form input,
+#container_recherche_prestation form select{width: 100%}
+#container_recherche_prestation form button{float: right;}
+#container_recherche_prestation form .field{margin: 0px !important}
+
+#container_recherche_demande{width:250px;float: left;}
+#container_recherche_prestation label,
+#container_recherche_demande label{font-weight: bold;}
+#container_recherche_prestation form,
+#container_recherche_demande form{margin:10px;}
+#container_recherche_demande form button{margin-left: 140px;}
+
+#container_recherche_demande form input,
+#container_recherche_demande form select{width: 200px; margin:2px;}
+
+#container_resultat_recherche_demande,                                             
+#container_filtre{width:668px;float: right;}
+#container_filtre table{width: 650px; text-align: center}
+
+#container_recherche_demande form .field{width:100%; margin: 0px;}
+
+#container_mess_accueil,
+#container_affectation,
+#container_habilitation,
+#container_stat,
+#container_export,
+#container_prestation,
+#container_import_demande,
+#container_creation_demande{width:100%; float:right;}
+
+#container_mess_accueil .group,
+#container_stat .group,
+#container_prestation .group{margin:5px; padding : 0;}
+
+#container_habilitation form{margin:5px;}
+#container_habilitation form #container_{margin-top:5px;}
+#container_habilitation form #container_ .group{margin-top:5px !important;}
+
+#container_prestation .group .picture{float:right; margin: 45px 5px 0 5px;}
+#container_prestation .w_skinnedTable{margin-top: -15px;}
+
+#container_import_demande label{width: 150px; }
+#container_import_demande .field{margin-left: 150px;}
+#container_import_demande textarea{width: 450px; height: 300px;margin-left: 20px; }
+#container_import_demande [type="checkbox"]{width:25px;;margin-left: 20px;}
+
+/*Tableau suivi demandes*/
+.demande_alerte td,.demande_alerte th{background-color: #FFD393 !important;}
+.demande_complete td,.demande_complete th{background-color: #a2ff9f !important;}
+.color_demande_complete{width: 20px;height: 20px;background-color: #a2ff9f;}
+.color_demande_alerte{width: 20px;height: 20px;background-color: #FFD393;}
+#first_item{width: 200px; }
+#first_item div{float: right;}
+
+tr.color_demande_complete td,tr.color_demande_complete .first{background-color: #a2ff9f;}
+tr.color_demande_alerte td,tr.color_demande_alerte .first{background-color: #FFD393;}
+
+.first #check_all{margin-left: 10px;}
+
+#container_reaffectation div{text-align: center;}
+#import_demande table td{vertical-align: top;}
+
+#container_resultat_recherche_demande h1{font-size: 13px; text-align: center;}
+
+.group {margin: 10px;}
+
+#container_export .group{margin:15px;}
+#container_export .group #libelle{width: 150px;}
+#container_export .group #complement select{width: 150px;}
+
+.img_basse{margin:0 !important;}
+.img_float_right{float: right;}
+
+#tableau_reeafectation_masse #checkAll{margin-left: 10px;}
+#container_traitement_prestation_masse #checkAll{margin-left: 10px;}
+
+.section{margin: 15px;}
+#ajout_presta, .remove_presta
+{
+    cursor: pointer;
+}
+
+.message_demande_lecture_seul
+{
+    padding: 0 0 0 20px;
+    margin-bottom: 25px;
+    font-size : large;
+    color: #034A9C;
+}
+
+.message_important
+{
+    text-align: center;
+    color: red;
+    font-size: large;
+    margin: 20px 20px 20px 20px;
+    line-height: 50px;
+}
+
+.famille_presta:disabled, .type_presta:disabled
+{
+    color : black;
+}
+
+.container_graph{margin: 5px;margin-top: 20px;}
+.container_graph h3{margin-bottom: 5px;}
+.container_graph span{position: relative;}
+.container_graph .float_gauche{float: left;}
+.container_graph .float_droit{float: right;}
+
+.occultant{width: 100%;height: 100%; opacity: 0.5; background-color: grey; position: absolute; z-index: 1000;}
+#fork {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+}
+
+.legend {
+    width: 40%;
+    border: 1px solid black;
+}
+
+.legend .title {
+    display: block;
+    margin: 0.5em;
+    border-style: solid;
+    border-width: 0 0 0 1em;
+    padding: 0 0.3em;
+}
+ .form_row label{
+     font-weight: bold;
+ }
+ 
+ .form_row textArea, #form_situation input[type="text"], #form_situation select{
+     width: 400px;
+ }

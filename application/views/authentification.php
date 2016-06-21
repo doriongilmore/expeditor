@@ -1,4 +1,4 @@
-<div id="container_connexion" class="bloc light-green-white js-auto-height direct-access">
+<div id="container_connexion" class="bloc light-blue-white js-auto-height direct-access">
     <h2>
         <u>Connexion</u>
     </h2>

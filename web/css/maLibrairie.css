@@ -284,11 +284,11 @@
 
 
 form .form_row .label_field{
-    width:200px; 
+    width:35%; 
     float: left;
 }
 form .form_row label{   
-    width:200px; 
+    width:100%; 
     font-weight: bold;
  }
 form .form_row{  

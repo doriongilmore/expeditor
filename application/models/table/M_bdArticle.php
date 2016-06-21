@@ -28,5 +28,16 @@ class M_bdArticle extends MY_Model {
         return parent::findBy($this->main_table, 'nom', $nom);
     }
     
+     public function insert($data){
+        return parent::insert($this->main_table, $data);
+    }
+    
+    public function delete($id){
+         return parent::delete($this->main_table, $id);
+    }
+      
+    public function update($data){
+         return parent::update($this->main_table, $data);   
+    }
     
 }

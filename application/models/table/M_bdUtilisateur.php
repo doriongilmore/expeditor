@@ -34,11 +34,17 @@ class M_bdUtilisateur extends MY_Model{
         return $res[0];   
     }
     
-       public function insert($data){
-           return parent::insert($this->$main_table, $data);
-       }
+    public function insert($data){
+        return parent::insert($this->main_table, $data);
+    }
     
-    
+    public function delete($id){
+         return parent::delete($this->main_table, $id);
+    }
+      
+    public function update($data){
+         return parent::update($this->main_table, $data);   
+    }
     
     
     

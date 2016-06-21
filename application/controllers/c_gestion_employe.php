@@ -17,7 +17,7 @@ class C_Gestion_Employe extends MY_Controller {
             $this->load->model('simple/M_Utilisateur');
             $this->M_Utilisateur->delete($_GET['id']);
             $this->data['message']['valid'] = "OK";
-            $this->affichage();
+            redirect('c_gestion_employe/affichage');
         }
         
 }

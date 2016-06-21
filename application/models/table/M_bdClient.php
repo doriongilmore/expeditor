@@ -11,7 +11,9 @@
  *
  * @author Administrateur
  */
-class M_bdClient {public function __construct() {
+class M_bdClient {
+    
+    public function __construct() {
         
         parent::__construct();
     } 

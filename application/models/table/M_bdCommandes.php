@@ -11,7 +11,7 @@
  *
  * @author Administrateur
  */
-class M_bdCommandes {
+class M_bdCommandes extends MY_Model{
     
     public function __construct() {
         

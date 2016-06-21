@@ -11,7 +11,7 @@
  *
  * @author Administrateur
  */
-class M_bdClient {
+class M_bdClient extends MY_Model {
     
     public function __construct() {
         

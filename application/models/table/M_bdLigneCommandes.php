@@ -11,6 +11,6 @@
  *
  * @author Administrateur
  */
-class M_bdLigneCommandes {
+class M_bdLigneCommandes extends MY_Model{
     //put your code here
 }

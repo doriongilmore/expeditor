@@ -11,21 +11,17 @@
  *
  * @author Administrateur
  */
-class M_bdUtilisateur extends CI_Model{
+class M_bdUtilisateur extends MY_Model{
     //put your code here
     
+      private $main_table = "utilisateur";
+    
     public function __construct() {
-        
         parent::__construct();
     }
     
     public function getById($id){
-       $this->db->select('*')
-                ->from('utilisateur')
-                ->where('id_utilisateur', $id);
-                
-        $res = $this->db->get()->result();
-        return $res[0];   
+      return parent::getById($this->main_table, $id);
     }
     
     public function getByLoginPassword($login,$password){
@@ -37,6 +33,10 @@ class M_bdUtilisateur extends CI_Model{
         $res = $this->db->get()->result();
         return $res[0];   
     }
+    
+       public function insert($data){
+           return parent::insert($this->$main_table, $data);
+       }
     
     
     

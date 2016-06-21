@@ -11,7 +11,7 @@
  *
  * @author Administrateur
  */
-class M_Article extends CI_Model{
+class M_Article extends MY_Model{
     //put your code here
     
     public $id_article = null;

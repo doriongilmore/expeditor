@@ -11,7 +11,9 @@
  *
  * @author Administrateur
  */
-class M_bdArticle {
+class M_bdArticle extends MY_Model {
+    
+    private $main_table ='article';
     
      public function __construct() {
         
@@ -19,21 +21,11 @@ class M_bdArticle {
     } 
     
     public function getById($id){
-       $this->db->select('*')
-                ->from('article')
-                ->where('id_article', $id);
-                
-        $res = $this->db->get()->result();
-        return $res[0];   
+       return parent::getById($this->main_table, $id);
     }
     
     public function getByNom($nom){
-        $this->db->select('*')
-                ->from('article')
-                ->where('nom', $nom);
-                
-        $res = $this->db->get()->result();
-        return $res[0];   
+        return parent::findBy($this->main_table, 'nom', $nom);
     }
     
     

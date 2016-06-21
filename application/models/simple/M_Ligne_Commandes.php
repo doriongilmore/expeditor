@@ -11,7 +11,7 @@
  *
  * @author Administrateur
  */
-class M_Ligne_Commandes  extends CI_Model{
+class M_Ligne_Commandes  extends MY_Model{
     //put your code here
     
     public $id_ligne_commande = null;

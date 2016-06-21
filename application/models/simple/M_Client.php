@@ -11,7 +11,7 @@
  *
  * @author Administrateur
  */
-class M_Client extends CI_Model{
+class M_Client extends MY_Model{
     //put your code here
     
     public $id_client = null;

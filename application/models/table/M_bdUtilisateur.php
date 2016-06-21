@@ -50,6 +50,25 @@ class M_bdUtilisateur extends MY_Model{
          return parent::update($this->main_table, $data);   
     }
     
+    public function getAllEmploye(){
+         return parent::findBy($this->main_table,'id_profil', PROFIL_EMPLOYE);
+    }
+    
+    
+    public function getAllStatCommande(){
+         $this->load->model('table/M_bdCommandes');
+        
+        $employe = getAllEmploye();
+        $res = array();
+        foreach ($employe as $emp){
+            $nb = $this->M_bdCommandes->getNbCommandeByUtilisateur($emp->get('id_uilisateur'));
+            $res[] = array(
+                'emp' => $emp,
+                'nb' => $nb
+            );
+        } 
+        return $res;    
+    }
     
     
 }

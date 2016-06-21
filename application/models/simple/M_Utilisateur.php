@@ -35,15 +35,12 @@ class M_Utilisateur extends MY_Model{
                $id = $this->get('id_profil');
                 $this->load->model('simple/M_Profil');
                 $cli = $this->M_Profil->getById($id);
-             
             default:
             break;
-                    
          }
      }
      
-     
-       public function getById($id){
+    public function getById($id){
            
         $res = $this->M_bdUtilisateur->getById($id);
         if ($res === null) return null;
@@ -53,9 +50,10 @@ class M_Utilisateur extends MY_Model{
     
      public function getAll(){
          return $this->M_bdUtilisateur->getAll();
-        
     }
     
-    
+    public function getAllEmploye(){
+        return $this->M_bdUtilisateur->getAllEmploye();
+    }
     
 }

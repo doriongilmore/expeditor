@@ -61,4 +61,14 @@ class M_Commandes extends MY_Model{
         
     }
     
+     public function getAllNonTaitee(){
+         return $this->M_bdCommandes->getAllNonTaitee();
+        
+    }
+    
+    public function getNbCommandeByUtilisateur($id_utilisateur){
+        return $this->M_bdCommandes->getNbCommandeByUtilisateur($id_utilisateur);
+        
+    }
+    
 }

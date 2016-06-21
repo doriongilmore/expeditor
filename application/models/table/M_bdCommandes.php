@@ -24,11 +24,36 @@ class M_bdCommandes extends MY_Model{
      return parent::getById($this->main_table, $id);
     }
     
-      public function getAll(){
+    public function getAll(){
        return parent::getAll($this->main_table);
     }
     
-     public function getByNum($num){
+    public function getAllNonTraitee(){
+       $this->db->select('*')
+                 ->from($this->main_table)
+                 ->where('id_etat != ',ETAT_TERMINE);
+        $res = $this->db->get()->result();
+        if(empty($res))
+            return null;
+        return $res;
+    }
+    
+    public function getNbCommandeByUtilisateur($id_utilisateur){
+           $this->db->select('count(*) nb')
+                 ->from($this->main_table)
+                 ->where('DAY(date_traitement)', date('d'))
+                 ->where('id_utilisateur', $id_utilisateur);
+        $res = $this->db->get()->result();
+        if(empty($res))
+            return null;
+        return $res[0]->nb;
+          
+    
+        
+        
+    }
+    
+    public function getByNum($num){
       return parent::findBy($this->main_table,'num_commande', $num); 
     }
     

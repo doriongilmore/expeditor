@@ -22,6 +22,26 @@ class M_Ligne_Commandes  extends MY_Model{
       
     public function __construct() {
         parent::__construct();
+        $this->load->model('table/M_bdLigneCommandes');
     }
     
+    
+     public function get($key) {
+        if (array_key_exists($key, get_object_vars($this))) 
+            return parent::get($key);
+        switch ($key) {
+            case 'commande':
+                $id = $this->get('id_commande');
+                $this->load->model('simple/M_Commandes');
+                $commande = $this->M_Commandes->getById($id);
+                return $commande;
+            case 'article':
+                $id = $this->get('id_article');
+                $this->load->model('simple/M_Article');
+                $article = $this->M_Client->getById($id);
+                return $article;
+            default:
+                break;
+        }
+     }
 }

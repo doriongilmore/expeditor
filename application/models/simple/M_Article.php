@@ -23,6 +23,13 @@ class M_Article extends MY_Model{
       
     public function __construct() {
         parent::__construct();
+        $this->load->model('table/M_bdArticles');
+    }
+    
+    
+     public function get($key) {
+        if (array_key_exists($key, get_object_vars($this))) 
+            return parent::get($key);
     }
     
 }

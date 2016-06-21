@@ -34,6 +34,11 @@ class M_Client extends MY_Model{
         return parent::initialisation($tabInfo);
     }
     
+      public function get($key) {
+        if (array_key_exists($key, get_object_vars($this))) 
+            return parent::get($key);
+      }
+    
     public function getById($id){
        return $this->M_bdClient->getById($id);
     }

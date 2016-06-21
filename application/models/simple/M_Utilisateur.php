@@ -55,7 +55,7 @@ class M_Utilisateur extends MY_Model{
     }
     
      public function getAll(){
-         return $this->M_bdUtilisateur->getAll();
+         return $this->array_initialisation($this->M_bdUtilisateur->getAll());
         
     }
     

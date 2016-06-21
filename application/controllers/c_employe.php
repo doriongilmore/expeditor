@@ -7,8 +7,9 @@ class C_Employe extends MY_Controller {
 //            $this->load->model('simple/M_Utilisateur');
 //            $u = $this->M_Utilisateur->getById(1);
             $this->load->model('simple/M_Commandes');
-//            $u = $this->M_Commandes->getById(1);
             
+            $this->data['commande'] = $this->M_Commandes->getFirstCommande();
+            $this->data['client'] = $this->data['commande']->get('client');
             $this->_loadView('employe/affichage_commande');
 	}
 }

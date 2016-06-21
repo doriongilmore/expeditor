@@ -21,6 +21,18 @@ class C_Manager extends MY_Controller {
 	{
             $this->load->view('welcome_message');
 	}
+        
+        public function affichageCommande()
+	{
+//            $this->load->model('simple/M_Utilisateur');
+//            $u = $this->M_Utilisateur->getById(1);
+            $this->load->model('simple/M_Commandes');
+            
+            $this->data['commande'] = $this->M_Commandes->getFirstCommande();
+            $this->data['client'] = $this->data['commande']->get('client');
+            $this->_loadView('employe/affichage_commande');
+	}
+        
 }
 
 /* End of file welcome.php */

@@ -24,16 +24,16 @@
 	</tr>
 	</thead>
 	<tbody>
-       <?php 
-        echo'<tr>';
-            echo'<td>1</td>';
-            echo'<td>Carte graphique</td>';
-            echo'<td>42</td>';
-            echo'<td>150</td>';
-            echo'<td>280</td>';
-            echo'<td><a id="btnDeleteXXX" href class="btn btn-danger">Supprimer</a></td>';
-	echo'</tr>';
-       ?>
+       <?php foreach ($articles as $a): ?>
+            <tr>
+                <td><?php echo $a->get('id_article') ?></td>
+                <td><?php echo $a->get('nom') ?></td>
+                <td><?php echo $a->get('quantite_stock') ?></td>
+                <td><?php echo $a->get('poids') ?></td>
+                <td><?php echo $a->get('prix') ?></td>
+                <td><a id="btnDeleteXXX" href class="btn btn-danger">Supprimer</a></td>
+            </tr>
+        <?php endforeach; ?>    
 	
 	</tbody>
 </table>

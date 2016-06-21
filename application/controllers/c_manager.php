@@ -34,6 +34,8 @@ class C_Manager extends MY_Controller {
             $this->_loadView('article/affichage_commande_manager');
 	}
         
+        
+        
 }
 
 /* End of file welcome.php */

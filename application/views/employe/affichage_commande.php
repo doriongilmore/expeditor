@@ -1,16 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>EXPEDITOR</title>
-</head>
-<body>
-
-<div id="container">
-    <h1></h1>
-    <div id="logo">
-    </div>
-
     <div id="Commande">
         <form method="post" action="">
             <div id="Client" class="panel-title bloc">
@@ -45,7 +32,7 @@
         </form>
     </div>
     <div class="input-group-addon">
-        <input type="submit" value="Imprimer"/>
+        <input type="button" value="Imprimer" onClick="window.print()"/>
         <input type="submit" value="Valider"/>
     </div>
     <div class="input-group-addon">
@@ -53,10 +40,3 @@
         <input type="text" readonly="readonly" class="readonly" value="300" id="commande_poids_total"/>
         
     </div>
-    
-
-    <!--<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>-->
-</div>
-
-</body>
-</html>

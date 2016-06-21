@@ -73,6 +73,7 @@ class M_bdCommandes extends MY_Model{
        $this->db->select('*', false)
                 ->from('commande')
                 ->where('date_demande = (SELECT MIN(date_demande) FROM (`commande`))')
+                ->where('id_etat != ', ETAT_TERMINE)
                 ;
                 
         $res = $this->db->get()->result();

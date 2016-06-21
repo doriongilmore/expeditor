@@ -13,27 +13,28 @@
  */
 class M_bdClient extends MY_Model {
     
+    private $main_table = "client";
+    
     public function __construct() {
         
         parent::__construct();
     } 
     
     public function getById($id){
-       $this->db->select('*')
-                ->from('client')
-                ->where('id_client', $id);
-                
-        $res = $this->db->get()->result();
-        return $res[0];   
+       return parent::getById($this->main_table, $id);
     }
     
     public function getByNom($nom){
+         return parent::findBy($this->main_table,'nom', $nom); 
+    }
+    
+    
+    public function getByNomAdresse($nom,$adr){
         $this->db->select('*')
-                ->from('client')
-                ->where('nom', $nom);
-                
-        $res = $this->db->get()->result();
-        return $res[0];   
+                ->from($this->main_table)
+                ->where('nom', $nom)
+                ->where('adresse_1', $adr);
+        return $this->db->get()->result();
     }
     
      public function insert($data){

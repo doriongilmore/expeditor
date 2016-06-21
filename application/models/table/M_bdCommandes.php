@@ -13,28 +13,21 @@
  */
 class M_bdCommandes extends MY_Model{
     
+    private $main_table = "commande";
+    
     public function __construct() {
         
         parent::__construct();
     } 
     
     public function getById($id){
-       $this->db->select('*')
-                ->from('commande')
-                ->where('id_commande', $id);
-                
-        $res = $this->db->get()->result();
-        return $res[0];   
+     return parent::getById($this->main_table, $id);
     }
     
      public function getByNum($num){
-       $this->db->select('*')
-                ->from('commande')
-                ->where('num_commande', $id);
-                
-        $res = $this->db->get()->result();
-        return $res[0];   
+      return parent::findBy($this->main_table,'num_commande', $num); 
     }
+    
      public function insert($data){
         return parent::insert($this->main_table, $data);
     }

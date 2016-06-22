@@ -11,10 +11,10 @@
     <div id="logo">
     </div>
 
-    <table class="table table-striped">
+    <table class="table table-striped" id="employeTable">
 	<caption>Liste des employés</caption>
 	<thead>
-	<tr >
+	<tr>
 		<th>N°Employé</th>
 		<th>Type</th>
 		<th>Prénom</th>
@@ -41,8 +41,19 @@
     <a href id="btnUpdate" value="Supprimer" class="btn btn-warning">Modifier</a>
     <a href id="btnAdd" value="Supprimer" class="btn btn-success">Ajouter</a>   
 
+    <input type="button" value="test" onclick="addRow()" >
     <!--<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>-->
 </div>
 
+    <script>
+    
+    function addRow()
+    {
+       
+        
+        $('#employeTable > tbody:last-child').append('<tr><td>ddd</td><td>ddddd</td><td>dddd</td><td>dddd</td><td>ddddd</td></tr>');
+    }
+    
+    </script>
 </body>
 </html>

@@ -1,4 +1,10 @@
 var impression_faite = false;
+var valtmp = (location.href).split('/');
+var URI = valtmp[0]+"//"+valtmp[2]+"/expeditor/";
+
+
+
+
 $(document).on('ready', function(){
 
 

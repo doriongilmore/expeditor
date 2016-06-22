@@ -80,4 +80,9 @@ class M_Utilisateur extends MY_Model{
             return true;
         return false;
     }
+    
+    public function delete($id)
+    {
+        return $this->M_bdUtilisateur->delete($id);
+    }
 }

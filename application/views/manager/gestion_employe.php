@@ -31,14 +31,15 @@
                 <td><?php echo $e->get('prenom') ?></td>
                 <td><?php echo $e->get('nom') ?></td>
                 <td><?php echo $e->get('login') ?></td>
-                <td><a href="c_gestion_employe/btn_supprimer?id=<?php echo $e->get('id_utilisateur') ?>" id="btnDeleteXXX" 
-                       class="btn btn-danger">Supprimer</a></td>
+                <td><a href="c_gestion_employe/btn_supprimer?id=<?php echo $e->get('id_utilisateur') ?>" id="btnDelete" 
+                       class="btn btn-danger">Supprimer</a>
+                <input type="button" id="btnUpdate" value="Modifier" class="btn btn-warning" onclick="btnUpdateEvent()"></td>
             </tr>
         <?php endforeach; ?>    
 	
 	</tbody>
 </table>
-    <input type="button" id="btnUpdate" value="Modifier" class="btn btn-warning" onclick="btnUpdateEvent()">
+    <input type="button" id="btnCancel" value="Annuler" style="display:none" class="btn btn-warning" onclick="btnUpdateEvent()">
     <input type="button" id="btnAdd" value="Ajouter" class="btn btn-success" onclick="btnAddEvent()"> 
     <!--<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>-->
 </div>
@@ -48,7 +49,8 @@
     function btnAddEvent()
     {      
         if(document.getElementById("btnUpdate").value==='Modifier'){
-            document.getElementById("btnUpdate").value='Annuler';
+//            document.getElementById("btnCancel").style='display:';
+            $('#btnCancel').attr('style', '');
             document.getElementById("btnAdd").value='Valider'; 
         
             $('#employeTable > tbody:last-child')

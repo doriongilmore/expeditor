@@ -83,7 +83,9 @@ $(document).on('ready', function(){
             success: function(datas)
             {
 //                finChargement();
+                console.log(datas);
                 if(datas != '' && datas != undefined)
+                    
                     resultatRequete = JSON.parse(datas);
             },
             beforeSend:function()

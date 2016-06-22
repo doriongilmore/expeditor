@@ -45,7 +45,7 @@
     
     <script>
     
-    function btnAddEvent(type, prenom, nom, login)
+    function btnAddEvent()
     {      
         if(document.getElementById("btnUpdate").value==='Modifier'){
             document.getElementById("btnUpdate").value='Annuler';
@@ -67,17 +67,19 @@
             document.getElementById("btnAdd").value='Ajouter'; 
             
 
-                    var url = URI + 'ajax/sauvegarderEmploye';
+            
+    var url = URI + 'ajax/sauvegarderEmploye';
             data = {
             'type' : $('#newType').children('select').val(),
-            'prenom' : $('#newPrenom').children('select').val(),
-            'nom' : $('#newNom').children('select').val(),
-            'login' : $('#newLogin').children('select').val(),
+            'prenom' : $('#newPrenom').children('input').val(),
+            'nom' : $('#newNom').children('input').val(),
+            'login' : $('#newLogin').children('input').val(),
             'password' : 'password'};
 
         
-        var res = requeteAjax(url, data);
-        return res;
+        requeteAjax(url, data);
+        
+        location.reload();
             
 
         }

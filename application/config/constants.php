@@ -11,6 +11,8 @@ define('ETAT_URGENT', 4);
 define('PROFIL_EMPLOYE', 1);
 define('PROFIL_MANAGER', 2);
 
+define('FORMAT_DATE_TRAITEMENT', 'Y-m-d');
+define('FORMAT_DATE_COMMANDE', 'Y-m-d H:i:s');
 
 
 // Consantes d'application

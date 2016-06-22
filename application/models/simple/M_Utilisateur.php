@@ -41,11 +41,10 @@ class M_Utilisateur extends MY_Model{
      }
      
     public function getById($id){
-           
         $res = $this->M_bdUtilisateur->getById($id);
         if ($res === null) return null;
         $u = $this->initialisation($res);
-       return  $u;
+        return  $u;
     }
     
      public function getAll(){

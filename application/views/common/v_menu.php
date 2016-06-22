@@ -9,7 +9,7 @@
 	if (isset($user) && !is_null($user)) {
                 if ($user->checkProfil(PROFIL_MANAGER)) {
             ?>
-                    <li><a href="c_manager/affichageCommande">Commandes</a>
+                    <li><a href="c_manager/affichageStatistique">Commandes</a>
 <!--                        <ul class="col">
                             <li><span></span>
                                 <ul>

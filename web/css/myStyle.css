@@ -13,7 +13,10 @@ body>#Page{
 #Commande{
     margin-bottom: 20px;
 }
-
+#Commandes table{
+    width: 100%;
+    
+}
 
 
 

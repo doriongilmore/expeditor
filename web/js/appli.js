@@ -50,7 +50,8 @@ $(document).on('ready', function(){
     
     function impression(){
         $('.commande_qte_relle').each(function(){
-            $(this).parent().html($(this).val());
+            $(this).parent().append($(this).val());
+            $(this).attr('type', 'hidden');
         });
         $('#commande_poids_total').parent().append( ' : ' + $('#commande_poids_total').val());
         $('#commande_poids_total').attr('style', 'display:none');

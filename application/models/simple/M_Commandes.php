@@ -20,7 +20,6 @@ class M_Commandes extends MY_Model{
     public $date_demande = null;
     public $date_traitement = null;
     public $id_etat = null;    
-    public $etat = null;    
     public $id_utilisateur_traite = null;    
       
     public function __construct() {
@@ -32,6 +31,9 @@ class M_Commandes extends MY_Model{
 //        return parent::initialisation($tabInfo);
 //    }
     
+    public function getById($id) {
+        return $this->initialisation($this->M_bdCommandes->getById($id));
+    }
     
     public function get($key) {
         if (array_key_exists($key, get_object_vars($this))) 
@@ -47,12 +49,36 @@ class M_Commandes extends MY_Model{
                 $l = $this->M_Ligne_Commandes->getByIdCommande($this->get('id_commande'));
                 return $l;
             case 'utilisateur':
-                 $id = $this->get('id_utilisateur_traite');
-                if($id === null){return null;}else{
-                $this->load->model('simple/M_Utilisateur');
-                $user = $this->M_Utilisateur->getById($id);
-                return $user;}
-            
+                $id = $this->get('id_utilisateur_traite');
+                
+                if($id === null){
+                    $user = null;
+                }else{
+                    $this->load->model('simple/M_Utilisateur');
+                    $user = $this->M_Utilisateur->getById($id);
+                }
+                return $user;
+            case 'etat':
+                $id = $this->get('id_etat');
+                $etat = '';
+                switch ($id) {
+                    case ETAT_ATTENTE:
+                        $etat = 'En attente';
+                        break;
+                    case ETAT_EN_COURS:
+                        $etat = 'En cours';
+                        break;
+                    case ETAT_TERMINE:
+                        $etat = 'Terminée';
+                        break;
+                    case ETAT_URGENT:
+                        $etat = 'Urgente';
+                        break;
+                    default:
+                        break;
+                }
+                return $etat;
+                
             default:
                 break;
         }
@@ -71,9 +97,10 @@ class M_Commandes extends MY_Model{
         }
         if ($commande->get('id_etat') != ETAT_URGENT){
             $commande->set('id_etat', ETAT_EN_COURS);
-            $commande->set('date_traitement', date());
-            $commande->set('id_utilisateur_traite', $this->user->id_utilisateur);
         }
+        $commande->set('date_traitement', date(FORMAT_DATE_TRAITEMENT));
+        $commande->set('id_utilisateur_traite', $_SESSION['user_id']);
+        $this->update($commande);
         return $commande;
     }
     
@@ -106,4 +133,7 @@ class M_Commandes extends MY_Model{
         
     }
     
+    public function update($data) {
+        return $this->M_bdCommandes->update($data);
+    }
 }

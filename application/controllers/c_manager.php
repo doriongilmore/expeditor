@@ -17,38 +17,69 @@ class C_Manager extends MY_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-            $this->load->view('welcome_message');
-	}
+
+    public function affichageCommande()
+    {
+        $this->load->model('simple/M_Commandes');
+
+        $this->data['commande'] = $this->M_Commandes->getFirstCommande();
+        //$this->data['commandes'] = $this->MCommandes->getyId($id);
+        $this->data['client'] = $this->data['commande']->get('client');
+        $this->data['lignes'] = $this->data['commande']->get('lignes_commande');
+        $this->_loadView('manager/affichage_commande');
+    }
+
+    public function affichageStatistique()
+    {
+        $this->load->model('simple/M_Utilisateur');
+        $this->load->model('simple/M_Commandes');
+
+        $this->data['commandes'] = $this->M_Commandes->getAllNonTraitee();
+        $this->data['statistique'] = $this->M_Utilisateur->getAllStatCommande();
+
+        $this->_loadView('manager/affichage_principale');
+    }
+
+    function importer_fichier_temporaire($document)
+    {
+        $tmp_filename = str_replace(array('(',')',' '),array('','','_'),convert_accented_characters($_POST['_'.$document])) ;
+
+        $upload_path = './web/files/';
+        $config['file_name'] = $tmp_filename;
+        $config['remove_spaces'] = TRUE;
+        $config['overwrite'] = TRUE;
+        $config['upload_path'] = './web/files/temp/';
+        $config['allowed_types'] = 'xls|xlsm|xlsx|xlsxm|csv';
         
-        public function affichageCommande()
-	{
-//            $this->load->model('simple/M_Utilisateur');
-//            $u = $this->M_Utilisateur->getById(1);
-            $this->load->model('simple/M_Commandes');
+        $this->load->library('upload', $config);
+        
+        if ( ! $this->upload->do_upload($document)){
+            $link1 = $config['upload_path'].$tmp_filename;
+            $link2 = $upload_path.$tmp_filename;
             
-            $this->data['commande'] = $this->M_Commandes->getFirstCommande();
-            //$this->data['commandes'] = $this->MCommandes->getyId($id);
-            $this->data['client'] = $this->data['commande']->get('client');
-            $this->data['lignes'] = $this->data['commande']->get('lignes_commande');
-            $this->_loadView('manager/affichage_commande');
-	}
-        
-        public function affichageStatistique()
-	{
-//            $this->load->model('simple/M_Utilisateur');
-//            $u = $this->M_Utilisateur->getById(1);
-            $this->load->model('simple/M_Utilisateur');
-            $this->load->model('simple/M_Commandes');
-            
-            $this->data['commandes'] = $this->M_Commandes->getAllNonTraitee();
-            $this->data['statistique'] = $this->M_Utilisateur->getAllStatCommande();
-                    
-            $this->_loadView('manager/affichage_principale');
-	}
+            if(file_exists($link1) || file_exists($link2))
+                    return true;
+            throw new Exception($this->upload->display_errors());
+        }
+        else
+            return true;//Chargement réussit
+    }
+    
+    
+    function importer_fichier($document, $id, $traitement = false)
+    {
+        $document = str_replace(array('(',')',' '),array('','','_'),convert_accented_characters($document)) ;
         
         
+        $tmp = './web/files/temp/'.($document);
+        $upload_path = './web/files/'.($document);
+        $bool_copy = copy($tmp, $upload_path);
+
+        if(file_exists($tmp))//si le fichier existe on le supprime
+            unlink($tmp);//suppression du fichier
+        
+        return $document;
+    }
         
 }
 

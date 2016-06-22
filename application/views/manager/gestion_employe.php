@@ -38,21 +38,74 @@
 	
 	</tbody>
 </table>
-    <a href id="btnUpdate" value="Supprimer" class="btn btn-warning">Modifier</a>
-    <a href id="btnAdd" value="Supprimer" class="btn btn-success">Ajouter</a>   
-
-    <input type="button" value="test" onclick="addRow()" >
+    <input type="button" id="btnUpdate" value="Modifier" class="btn btn-warning" onclick="btnUpdateEvent()">
+    <input type="button" id="btnAdd" value="Ajouter" class="btn btn-success" onclick="btnAddEvent()"> 
     <!--<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>-->
 </div>
-
+    
     <script>
     
-    function addRow()
-    {
-       
+    function btnAddEvent(type, prenom, nom, login)
+    {      
+        if(document.getElementById("btnUpdate").value==='Modifier'){
+            document.getElementById("btnUpdate").value='Annuler';
+            document.getElementById("btnAdd").value='Valider'; 
         
-        $('#employeTable > tbody:last-child').append('<tr><td>ddd</td><td>ddddd</td><td>dddd</td><td>dddd</td><td>ddddd</td></tr>');
+            $('#employeTable > tbody:last-child')
+            .append('<tr i="newRow">')
+   
+            .append('<td></td>') /* id utilisateur */
+            .append('<td id="newType"> <select class="form-control col-md-1"><option value="1">Employé</option><option value="2">Manager</option></select></td>') /* idprofil */
+            .append('<td id="newPrenom"><input class="form-control col-md-1" type="text" ></td>') /* prenom */
+            .append('<td id="newNom"><input class="form-control col-md-1" type="text" ></td>') /* nom */
+            .append('<td id="newLogin"><input class="form-control col-md-1" type="text" ></td>') /* login */
+                
+            .appent('</tr>');
+        }
+        else{
+            document.getElementById("btnUpdate").value='Modifier';
+            document.getElementById("btnAdd").value='Ajouter'; 
+            
+                    var url = URI + 'ajax/sauvegarderEmploye';
+            data = [
+            'type' : '',
+            'prenom' : '',
+            'nom' : '',
+            'login' : '',
+            'password' : ''
+          ];
+        
+        var res = requeteAjax(url, data);
+        return res;
+            
+
+        }
+   
     }
+    
+    
+    
+    
+    function btnUpdateEvent()
+    {      
+        if(document.getElementById("btnUpdate").value==='Modifier'){
+            document.getElementById("btnUpdate").value='Annuler';
+            document.getElementById("btnAdd").value='Valider'; 
+  
+        }
+        else{
+            document.getElementById("btnUpdate").value='Modifier';
+            document.getElementById("btnAdd").value='Ajouter'; 
+            location.reload();
+        }
+   
+   
+   
+   
+   
+
+    }
+   
     
     </script>
 </body>

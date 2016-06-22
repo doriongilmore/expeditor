@@ -62,7 +62,7 @@ $(document).on('ready', function(){
         
         
         
-    function requeteAjax (ajax_url, type) //Permet de faire n'importe quelle requete Ajax
+    function requeteAjax (ajax_url, postdata, type) //Permet de faire n'importe quelle requete Ajax
     {
         if(type == undefined)
             type = 'POST';
@@ -73,6 +73,7 @@ $(document).on('ready', function(){
             url     : ajax_url,
             type    : type,
             async : false,
+            data : postdata,
             success: function(datas)
             {
                 finChargement();

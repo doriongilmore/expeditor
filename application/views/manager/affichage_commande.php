@@ -30,6 +30,6 @@
         </form>
     </div>
     <div class="input-group-addon">
-        <input type="submit" id="btnLiberer" value="Libérer"/>
+        <input type="submit" id="btnLiberer" value="Libérer" onClick=""/>
     </div>
    

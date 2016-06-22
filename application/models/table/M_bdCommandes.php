@@ -57,6 +57,19 @@ class M_bdCommandes extends MY_Model{
       return parent::findBy($this->main_table,'num_commande', $num); 
     }
     
+    public function setUrgent($id_commande){
+        $com = $this->getById($id_commande);
+        $com['id_etat'] = ETAT_URGENT;
+        $this->update($com);
+    }
+    
+    public function liberer($id_commande){
+        $com = $this->getById($id_commande);
+        $com['id_etat'] = ETAT_ATTENTE;
+        $this->update($com);
+        
+    }
+    
      public function insert($data){
         return parent::insert($this->main_table, $data);
     }

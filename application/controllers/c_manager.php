@@ -29,9 +29,10 @@ class C_Manager extends MY_Controller {
             $this->load->model('simple/M_Commandes');
             
             $this->data['commande'] = $this->M_Commandes->getFirstCommande();
+            //$this->data['commandes'] = $this->MCommandes->getyId($id);
             $this->data['client'] = $this->data['commande']->get('client');
             $this->data['lignes'] = $this->data['commande']->get('lignes_commande');
-            $this->_loadView('article/affichage_commande_manager');
+            $this->_loadView('manager/affichage_commande');
 	}
         
         

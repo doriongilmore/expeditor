@@ -32,9 +32,9 @@ class M_Utilisateur extends MY_Model{
             return parent::get($key);
          switch ($key) {
             case 'profil':
-               $id = $this->get('id_profil');
+                $id = $this->get('id_profil');
                 $this->load->model('simple/M_Profil');
-                $cli = $this->M_Profil->getById($id);
+                return $this->M_Profil->getById($id);
             default:
             break;
          }
@@ -53,7 +53,7 @@ class M_Utilisateur extends MY_Model{
     }
     
     public function getAllEmploye(){
-        return $this->M_bdUtilisateur->getAllEmploye();
+         return $this->array_initialisation($this->M_bdUtilisateur->getAllEmploye());
     }
     
     public function getAllStatCommande(){

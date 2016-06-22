@@ -5,7 +5,7 @@
       <?php if (validation_errors()): ?>
           <div class="form_errors_search error_msg">
             <ul>
-        <?php echo validation_errors(); ?>
+        <?php echo $titre; ?>
             </ul>
           </div>
       <?php endif; ?>

@@ -35,6 +35,8 @@ class M_bdUtilisateur extends MY_Model{
                 ->where('password', $password);
                 
         $res = $this->db->get()->result();
+        if (empty($res))
+            return null;
         return $res[0];   
     }
     

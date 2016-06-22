@@ -4,8 +4,6 @@ class C_Employe extends MY_Controller {
 
 	public function affichage()
 	{
-//            $this->load->model('simple/M_Utilisateur');
-//            $u = $this->M_Utilisateur->getById(1);
             $this->load->model('simple/M_Commandes');
             
             $this->data['commande'] = $this->M_Commandes->getFirstCommande();

@@ -44,8 +44,8 @@ class M_Utilisateur extends MY_Model{
            
         $res = $this->M_bdUtilisateur->getById($id);
         if ($res === null) return null;
-        
-       return  $this->initialisation($res);
+        $u = $this->initialisation($res);
+       return  $u;
     }
     
      public function getAll(){
@@ -58,7 +58,16 @@ class M_Utilisateur extends MY_Model{
     
     public function getAllStatCommande(){
          return $this->M_bdUtilisateur->getAllStatCommande();
-        
     }
             
+    public function getByLoginPassword($login,$password){
+        $res = $this->M_bdUtilisateur->getByLoginPassword($login,$password);
+        return $this->initialisation($res);
+    }
+    
+    public function checkProfil($id_profil) {
+        if ($this->get('id_profil') == $id_profil)
+            return true;
+        return false;
+    }
 }

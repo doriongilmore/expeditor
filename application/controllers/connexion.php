@@ -34,16 +34,15 @@ class Connexion extends MY_Controller
     /** Si authentification ok ou mode dÃ©veloppement */
     if ($this->form_validation->run('authentification'))
     {
+        $u = $this->data['connected'];
       /** RÃ©cupÃ©ration de l'identifiant BDD de l'utilisateur */
-      // $u = $this->m_utilisateur->getUnUtilisateur($this->m_utilisateur->getByNni($this->input->post('identifiant_user')));
-
+//       $u = $this->m_utilisateur->getUnUtilisateur($this->m_utilisateur->getByNni($this->input->post('identifiant_user')));
+       
       /** Initialisation de la session PHP*/
-      // $_SESSION['user_id'] = $u->identifiant;
-//      $_SESSION['user_id'] = 1;
+       $_SESSION['user_id'] = $u->get('id_utilisateur');
       
       /** Initialisation de la session CI */
-      // $this->session->set_userdata('identifiant', $u->identifiant);
-//      $this->session->set_userdata('identifiant', 1);
+       $this->session->set_userdata('identifiant', $u->get('id_utilisateur'));
 
       /** On met Ã  jour les informations de log */
       // $this->log_access->setIdentifiant($u->identifiant);
@@ -51,7 +50,7 @@ class Connexion extends MY_Controller
       // $this->log_access->setAuthMsg('identification OK');
 
       /** Redirection vers la page d'accueil*/
-            redirect('accueil','refresh');
+            redirect('','refresh');
     }
     else
     {
@@ -93,17 +92,19 @@ class Connexion extends MY_Controller
     /** Destruction de la session CI */
     $this->session->unset_userdata('identifiant');
     
-    $this->load->helper('cookie');
-    $cookie = array(
-                   'name'   => 'spv3',
-                   'value'  => '',
-                   'expire' => '1',
-               );
-	  delete_cookie($cookie);
+//    $this->load->helper('cookie');
+//    $cookie = array(
+//                   'name'   => 'spv3',
+//                   'value'  => '',
+//                   'expire' => '1',
+//               );
+//	  delete_cookie($cookie);
 
     // $this->log_access->setAuthMsg('deconnexion');
     
-    redirect('accueil/index','refresh');
+    // déblocage des commandes en cours ?
+    
+    redirect('','refresh');
   }
 
 
@@ -137,10 +138,12 @@ class Connexion extends MY_Controller
     if ( ! validation_errors() )
     {
       // vérifier BDD
-	  // login : $this->input->post('identifiant_user')
-	  // mdp : $pwd
-           
-		   
+        $u = $this->m_utilisateur->getByLoginPassword($this->input->post('identifiant_user'), $pwd);
+        if (is_null($u)){
+            $this->errorCode = self::ERR_CONNEXION;
+            return false;
+        }
+        $this->data['connected'] = $u;
     }
     return true;
   }

@@ -66,7 +66,7 @@
             document.getElementById("btnUpdate").value='Modifier';
             document.getElementById("btnAdd").value='Ajouter'; 
             
-                    var url = URI + 'ajax/sauvegarderEmploye';
+            var url = URI + 'ajax/sauvegarderEmploye';
             data = [
             'type' : '',
             'prenom' : '',

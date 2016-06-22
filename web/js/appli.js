@@ -36,6 +36,7 @@
     $(document).on('ready', function(){
 
 
+        var total = 300; // poids initial du carton
 
         $('.commande_qte_relle').on('change', function(){
             if ($(this).val() < 0){
@@ -43,7 +44,6 @@
                 $('#commande_poids_total').val(total);
             }
             else{
-                var total = 300; // poids initial du carton
                 $('.commande_qte_relle').each(function(){
                     var poids = $(this).parent().attr('poids');
                     var qte = $(this).val();
@@ -54,3 +54,39 @@
         });
     });
         
+        
+//    function  debloquerSD (id){
+//        var url = URI + 'ajax/debloquerSD/'+id;
+//        var res = Constant.requeteAjax(url);
+//        return res;
+//        
+//    }
+        
+        
+        
+    function requeteAjax (ajax_url, type) //Permet de faire n'importe quelle requete Ajax
+    {
+        if(type == undefined)
+            type = 'POST';
+        
+        var resultatRequete = false;
+        $.ajax(
+        {
+            url     : ajax_url,
+            type    : type,
+            async : false,
+            success: function(datas)
+            {
+                finChargement();
+                if(datas != '' && datas != undefined)
+                    resultatRequete = JSON.parse(datas);
+            },
+            beforeSend:function()
+            {
+                chargement('Chargement en cours ...');
+            }
+
+        });
+        
+        return resultatRequete;
+    }

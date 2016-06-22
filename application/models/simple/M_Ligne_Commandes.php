@@ -46,7 +46,7 @@ class M_Ligne_Commandes  extends MY_Model{
      }
      
     public function getAll(){
-        return $this->M_bdLigneCommandes->getAll();
+        return $this->array_initialisation($this->M_bdLigneCommandes->getAll());
     }
     
     public function getByIdCommande($id) {

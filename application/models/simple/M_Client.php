@@ -44,7 +44,7 @@ class M_Client extends MY_Model{
     }
     
      public function getAll(){
-         return $this->M_bdClient->getAll();
+         return $this->array_initialisation($this->M_bdClient->getAll());
         
     }
     

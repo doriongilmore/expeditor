@@ -60,20 +60,19 @@
             .append('<td id="newNom"><input class="form-control col-md-1" type="text" ></td>') /* nom */
             .append('<td id="newLogin"><input class="form-control col-md-1" type="text" ></td>') /* login */
                 
-            .appent('</tr>');
+            .append('</tr>');
         }
         else{
             document.getElementById("btnUpdate").value='Modifier';
             document.getElementById("btnAdd").value='Ajouter'; 
             
                     var url = URI + 'ajax/sauvegarderEmploye';
-            data = [
-            'type' : '',
-            'prenom' : '',
-            'nom' : '',
-            'login' : '',
-            'password' : ''
-          ];
+            data = {
+            'type' : $('#newType').children('select').val(),
+            'prenom' : $('#newPrenom').children('select').val(),
+            'nom' : $('#newNom').children('select').val(),
+            'login' : $('#newLogin').children('select').val(),
+            'password' : 'password'};
         
         var res = requeteAjax(url, data);
         return res;

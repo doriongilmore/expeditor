@@ -1,6 +1,6 @@
 var impression_faite = false;
 var valtmp = (location.href).split('/');
-var URI = valtmp[0]+"//"+valtmp[2]+"/expeditor/";
+var URI = valtmp[0]+"//"+valtmp[2]+"/expeditor/index.php/";
 
 
 
@@ -82,13 +82,13 @@ $(document).on('ready', function(){
             data : postdata,
             success: function(datas)
             {
-                finChargement();
+//                finChargement();
                 if(datas != '' && datas != undefined)
                     resultatRequete = JSON.parse(datas);
             },
             beforeSend:function()
             {
-                chargement('Chargement en cours ...');
+//                chargement('Chargement en cours ...');
             }
 
         });

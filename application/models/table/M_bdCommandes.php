@@ -85,8 +85,10 @@ class M_bdCommandes extends MY_Model{
     public function getFirstCommande() {
        $this->db->select('*', false)
                 ->from('commande')
-                ->where('date_demande = (SELECT MIN(date_demande) FROM (`commande`))')
+//                ->where('date_demande = (SELECT MIN(date_demande) FROM (`commande`))')
                 ->where('id_etat != ', ETAT_TERMINE)
+                ->order_by('date_demande', 'ASC')
+               
                 ;
                 
         $res = $this->db->get()->result();
@@ -115,8 +117,8 @@ class M_bdCommandes extends MY_Model{
        $this->db->select('*', false)
                 ->from('commande')
 //                ->where('date_demande = (SELECT MIN(date_demande) FROM (`commande`))')
-                ->where('id_etat', ETAT_EN_COURS)
-                ->where('id_utilisateur_traite', $this->user->id_utilisateur)
+                ->where('id_etat != ', ETAT_TERMINE)
+                ->where('id_utilisateur_traite', $_SESSION['user_id'])
                 ;
                 
         $res = $this->db->get()->result();

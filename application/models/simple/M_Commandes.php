@@ -95,12 +95,14 @@ class M_Commandes extends MY_Model{
                 $commande = $this->getFirstCommande();
             }
         }
-        if ($commande->get('id_etat') != ETAT_URGENT){
-            $commande->set('id_etat', ETAT_EN_COURS);
+        if (!is_null($commande)) {
+            if ($commande->get('id_etat') != ETAT_URGENT){
+                $commande->set('id_etat', ETAT_EN_COURS);
+            }
+            $commande->set('date_traitement', date(FORMAT_DATE_TRAITEMENT));
+            $commande->set('id_utilisateur_traite', $_SESSION['user_id']);
+            $this->update($commande);
         }
-        $commande->set('date_traitement', date(FORMAT_DATE_TRAITEMENT));
-        $commande->set('id_utilisateur_traite', $_SESSION['user_id']);
-        $this->update($commande);
         return $commande;
     }
     

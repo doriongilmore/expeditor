@@ -30,35 +30,13 @@
         </form>
     </div>
     <div class="input-group-addon">
-        <input type="submit" id="btnLiberer" value="Libérer" onClick=""/>
+        <input type="submit" id="btnLiberer" value="Libérer" onClick="liberer(<?php echo  $m_article->get('id_article') ;?>)"/>
     </div>
    
 <script>
-    
-    function getXMLHttpRequest() {
-	var xhr = null;
-	
-	if (window.XMLHttpRequest || window.ActiveXObject) {
-		if (window.ActiveXObject) {
-			try {
-				xhr = new ActiveXObject("Msxml2.XMLHTTP");
-			} catch(e) {
-				xhr = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-		} else {
-			xhr = new XMLHttpRequest(); 
-		}
-	} else {
-		alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
-		return null;
-	}
-	return xhr;
-}
-    
-    function liberer(id_commandes){
-        var xhr = getXMLHttpRequest();
-        xhr.open("POST", "controllers/ajax.php", true);
-        xhr.send(id_commandes);
+    function liberer(id_commande){
+        var url = URI + 'ajax/liberer/'+id_commande;
+        var res = Constant.requeteAjax(url);
+       return res;
     }
-    
-  </script>
+</script>

@@ -46,6 +46,10 @@ class ajax extends MY_Controller {
     public function liberer($id_commande){
         $this->load->model('table/M_bdCommandes');
         $res = $this->M_bdCommandes->liberer($id_commande);
+        if (is_null($res))
+            echo 'true';
+        else
+            echo 'false';
     }
     
 }

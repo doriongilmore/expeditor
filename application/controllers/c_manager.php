@@ -35,6 +35,19 @@ class C_Manager extends MY_Controller {
             $this->_loadView('manager/affichage_commande');
 	}
         
+        public function affichageStatistique()
+	{
+//            $this->load->model('simple/M_Utilisateur');
+//            $u = $this->M_Utilisateur->getById(1);
+            $this->load->model('simple/M_Utilisateur');
+            $this->load->model('simple/M_Commandes');
+            
+            $this->data['commandes'] = $this->M_Commandes->getAllNonTraitee();
+            $this->data['statistique'] = $this->M_Utilisateur->getAllStatCommande();
+                    
+            $this->_loadView('manager/affichage_principale');
+	}
+        
         
         
 }

@@ -46,6 +46,13 @@ class M_Commandes extends MY_Model{
                 $this->load->model('simple/M_Ligne_Commandes');
                 $l = $this->M_Ligne_Commandes->getByIdCommande($this->get('id_commande'));
                 return $l;
+            case 'utilisateur':
+                 $id = $this->get('id_utilisateur_traite');
+                if($id === null){return null;}else{
+                $this->load->model('simple/M_Utilisateur');
+                $user = $this->M_Utilisateur->getById($id);
+                return $user;}
+            
             default:
                 break;
         }
@@ -90,8 +97,8 @@ class M_Commandes extends MY_Model{
         
     }
     
-     public function getAllNonTaitee(){
-         return $this->array_initialisation($this->M_bdCommandes->getAllNonTaitee());
+     public function getAllNonTraitee(){
+         return $this->array_initialisation($this->M_bdCommandes->getAllNonTraitee());
     }
     
     public function getNbCommandeByUtilisateur($id_utilisateur){

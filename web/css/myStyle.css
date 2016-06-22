@@ -13,3 +13,19 @@ body>#Page{
 #Commande{
     margin-bottom: 20px;
 }
+
+
+
+
+@media print{
+    .nepasimprimer,
+    .info,
+    .error,
+    .valid,
+    input[type='button'],
+    input[type='submit'],
+    #Footer,
+    #MainNavigation{
+        display: none;
+    }
+}

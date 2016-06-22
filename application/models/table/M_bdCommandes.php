@@ -95,6 +95,36 @@ class M_bdCommandes extends MY_Model{
         }
         return null;
     }
+    
+    public function getCommandeUrgente() {
+       $this->db->select('*', false)
+                ->from('commande')
+//                ->where('date_demande = (SELECT MIN(date_demande) FROM (`commande`))')
+                ->where('id_etat', ETAT_URGENT)
+               ->order_by('date_demande', 'ASC')
+                ;
+                
+        $res = $this->db->get()->result();
+        if (!empty($res)) {
+            return $res[0];   
+        }
+        return null;
+    }
+    
+    public function getCommandeEnCoursByIdEmploye() {
+       $this->db->select('*', false)
+                ->from('commande')
+//                ->where('date_demande = (SELECT MIN(date_demande) FROM (`commande`))')
+                ->where('id_etat', ETAT_EN_COURS)
+                ->where('id_utilisateur_traite', $this->user->id_utilisateur)
+                ;
+                
+        $res = $this->db->get()->result();
+        if (!empty($res)) {
+            return $res[0];   
+        }
+        return null;
+    }
  /*   public function getByClient($client){
         $this->db->select('*')
                 ->from('commande')

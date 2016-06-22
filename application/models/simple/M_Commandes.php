@@ -51,6 +51,35 @@ class M_Commandes extends MY_Model{
         }
     }
     
+    public function getCommandeATraiter(){
+        // Commande en cours de traitement par le même utilisateur
+        $commande = $this->getCommandeEnCoursByIdEmploye();
+        if (is_null($commande)) {
+            // Commande urgente
+            $commande = $this->getCommandeUrgente();
+            if (is_null($commande)){
+                // Première commande de la liste
+                $commande = $this->getFirstCommande();
+            }
+        }
+        if ($commande->get('id_etat') != ETAT_URGENT){
+            $commande->set('id_etat', ETAT_EN_COURS);
+            $commande->set('date_traitement', date());
+            $commande->set('id_utilisateur_traite', $this->user->id_utilisateur);
+        }
+        return $commande;
+    }
+    
+    public function getCommandeEnCoursByIdEmploye(){
+        $req = $this->M_bdCommandes->getCommandeEnCoursByIdEmploye();
+        return $this->initialisation($req);
+    }
+    
+    public function getCommandeUrgente(){
+        $req = $this->M_bdCommandes->getCommandeUrgente();
+        return $this->initialisation($req);
+    }
+    
     public function getFirstCommande(){
         $req = $this->M_bdCommandes->getFirstCommande();
         return $this->initialisation($req);

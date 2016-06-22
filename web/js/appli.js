@@ -1,59 +1,57 @@
-/* $(document).on('keyup','#txt_nom_equipe',function(){
-        nom = $('#txt_nom_equipe').val();
-        tabUri = (location.href).split('/');
-        URI = tabUri[0]+"//"+tabUri[2];
-        urlAjax = URI + '/ajax/nameTeamDispo/'; //+nom;
-        nomIndispo = URI + '/web/images/non.png';
-        nomDispo = URI + '/web/images/ok.png';
-        $.ajax(
-        {
-            url     : urlAjax ,
-            type    : 'POST',
-            async : true,
-            data : {
-                nom:nom
-            },
-            success: function(datas)
-            {
-                    if (datas == null){ // erreur
-                        $('#equipe_nom_dispo').attr('src', nomIndispo );
-                    }else if (datas == 'false'){ // nom indisponible
-                        $('#equipe_nom_dispo').attr('src', nomIndispo );
-                    }else if (datas == 'true'){ // nom disponible
-                        $('#equipe_nom_dispo').attr('src', nomDispo );
-                    }
-//                resultatRequete = null;
-//                if(datas != '' && datas != undefined)
-//                    resultatRequete = JSON.parse(datas);
-//                console.log(resultatRequete);
-            }
-            
-        });
-       
+var impression_faite = false;
+$(document).on('ready', function(){
+
+
+
+    $('.commande_qte_relle').on('change', function(){
+
+        var min = parseInt($(this).attr('min'));
+        var max = parseInt($(this).attr('max'));
+        var val = parseInt($(this).val());
+
+        if (val < min){
+            alert('Valeur négative impossible.');
+            $(this).val(min);
+        }
+        if (val > max){
+            alert('Attention, vous mettez plus d\'article que ce que demande le client.');
+            $(this).val(max);
+        }
+        maj_poids();
     });
-
-        */
-    $(document).on('ready', function(){
-
-
-        var total = 300; // poids initial du carton
-
-        $('.commande_qte_relle').on('change', function(){
-            if ($(this).val() < 0){
-                alert('Valeur négative impossible.');
-                $('#commande_poids_total').val(total);
-            }
-            else{
-                $('.commande_qte_relle').each(function(){
-                    var poids = $(this).parent().attr('poids');
-                    var qte = $(this).val();
-                    total += poids * qte;
-                });
-                $('#commande_poids_total').val(total);
-            }
-        });
-    });
+    maj_poids();
+});
         
+    function maj_poids(){
+        var total = 300; // poids initial du carton
+        $('.commande_qte_relle').each(function(){
+            var poids = $(this).parent().attr('poids');
+            var qte = $(this).val();
+            total += poids * qte;
+        });
+        $('#commande_poids_total').val(total);
+    }
+    
+    
+    function validation_commande(){
+        if(impression_faite === true){
+            return true;
+        }else{
+            alert('Attention, vous n\'avez pas imprimé le bon de livraison.');
+        }
+        return false;
+    }
+    
+    function impression(){
+        $('.commande_qte_relle').each(function(){
+            $(this).parent().html($(this).val());
+        });
+        $('#commande_poids_total').parent().append( ' : ' + $('#commande_poids_total').val());
+        $('#commande_poids_total').attr('style', 'display:none');
+        
+        impression_faite = true;
+        window.print();
+    }
         
 //    function  debloquerSD (id){
 //        var url = URI + 'ajax/debloquerSD/'+id;

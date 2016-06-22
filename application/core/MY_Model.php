@@ -126,7 +126,7 @@ class MY_Model extends CI_Model
                 $arrayData[$key] = $data->get($key) ;
         else
             $arrayData = $data;
-        $this->db->where('id' . $table, $data->get('identifiant'));
+        $this->db->where('id_' . $table, $data->get('id_'.$table));
         $this->db->update($table, $arrayData);
         $retour = ($this->db->affected_rows()>0)?true:false;
         return $retour ;

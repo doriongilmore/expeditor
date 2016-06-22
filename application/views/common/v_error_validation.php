@@ -1,9 +1,9 @@
 
 <?php  
-if(isset($info))
-    echo '<div class="info">'.$info.'</div>';
-if(isset($error))
-    echo '<div class="error">'.$error.'</div>';
-if(isset($valid))
-    echo '<div class="valid">'.$valid.'</div>';
+if(isset($message['info']))
+    echo '<div class="info">'.$message['info'].'</div>';
+if(isset($message['error']))
+    echo '<div class="error">'.$message['error'].'</div>';
+if(isset($message['valid']))
+    echo '<div class="valid">'.$message['valid'].'</div>';
 ?>

@@ -41,8 +41,8 @@ class M_bdCommandes extends MY_Model{
     public function getNbCommandeByUtilisateur($id_utilisateur){
            $this->db->select('count(*) nb')
                  ->from($this->main_table)
-                 ->where('DAY(date_traitement)', date('d'))
-                 ->where('id_utilisateur', $id_utilisateur);
+                 ->where('DAY(date_traitement)',12)
+                 ->where('id_utilisateur_traite', $id_utilisateur);
         $res = $this->db->get()->result();
         if(empty($res))
             return null;

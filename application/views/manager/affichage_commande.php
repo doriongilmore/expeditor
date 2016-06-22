@@ -30,11 +30,13 @@
         </form>
     </div>
     <div class="input-group-addon">
-        <input type="submit" id="btnLiberer" value="Libérer" onClick="libere(<?php echo  $m_article->get('id_article') ;?>)"/>
+        <input type="submit" id="btnLiberer" value="Libérer" onClick="liberer(<?php echo  $m_article->get('id_article') ;?>)"/>
     </div>
    
 <script>
-    function libere(id_commande){
-       // appel de liberer(id) depuis fichier ajax
+    function liberer(id_commande){
+        var url = URI + 'ajax/liberer/'+id_commande;
+        var res = Constant.requeteAjax(url);
+       return res;
     }
 </script>

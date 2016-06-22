@@ -57,20 +57,7 @@ class M_bdUtilisateur extends MY_Model{
     }
     
     
-    public function getAllStatCommande(){
-         $this->load->model('table/M_bdCommandes');
-        
-        $employe = getAllEmploye();
-        $res = array();
-        foreach ($employe as $emp){
-            $nb = $this->M_bdCommandes->getNbCommandeByUtilisateur($emp->get('id_uilisateur'));
-            $res[] = array(
-                'emp' => $emp,
-                'nb' => $nb
-            );
-        } 
-        return $res;    
-    }
+    
     
     
 }

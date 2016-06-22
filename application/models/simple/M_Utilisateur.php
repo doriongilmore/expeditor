@@ -57,7 +57,18 @@ class M_Utilisateur extends MY_Model{
     }
     
     public function getAllStatCommande(){
-         return $this->M_bdUtilisateur->getAllStatCommande();
+        $this->load->model('table/M_bdCommandes');
+        
+        $employe = $this->getAllEmploye();
+        $res = array();
+        foreach ($employe as $emp){
+            $nb = $this->M_bdCommandes->getNbCommandeByUtilisateur($emp->get('id_utilisateur'));
+            $res[] = array(
+                'emp' => $emp,
+                'nb' => $nb
+            );
+        } 
+        return $res;    
     }
             
     public function getByLoginPassword($login,$password){

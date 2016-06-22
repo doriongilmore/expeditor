@@ -66,7 +66,7 @@ class M_bdCommandes extends MY_Model{
     public function liberer($id_commande){
         $com = $this->getById($id_commande);
         $com['id_etat'] = ETAT_ATTENTE;
-        $this->update($com);
+        return $this->update($com);
         
     }
     

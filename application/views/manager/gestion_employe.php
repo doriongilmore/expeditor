@@ -34,8 +34,9 @@
                 <td class="login"><?php echo $e->get('login') ?></td>
                 <td><a href="c_gestion_employe/btn_supprimer?id=<?php echo $e->get('id_utilisateur') ?>" id="btnDelete" 
                        class="btn btn-danger">Supprimer</a>
-                <input type="button" id="btnUpdate" value="Modifier" class="btn btn-warning" onclick="btnModif(this)"></td>
+                <input type="button" id="btnUpdate" value="Modifier" class="btn btn-warning" onclick="btnModif(this, <?php echo $e->get('id_utilisateur') ?>)"></td>
             </tr>
+             <input id="idStock" type="hidden" value=""/>
         <?php endforeach; ?>    
 	
 	</tbody>
@@ -47,18 +48,23 @@
     
     <script>
    
-        function btnModif(btn_modif)
+        function btnModif(btn_modif, id)
     {
+      
+        if(id != undefined){
+            document.getElementById('idStock').value=id;
+        }
         
         $('#btnAdd').attr('onclick', '');
         $('#btnAdd').attr('onclick', 'btnModif()');
         
         if(document.getElementById('btnAdd').value==='Valider')
-        {       
+        {      
+       
             var url = URI + 'ajax/sauvegarderModificationEmploye';
             data = {
                 
-            'id_utilisateur' : $('.id_utilisateur').children('input').val(),    
+            'id_utilisateur' : document.getElementById('idStock').value.toString(),    
             'profil' : $('.id_profil').children('input').val(),
             'prenom' : $('.prenom').children('input').val(),
             'nom' : $('.nom').children('input').val()}

@@ -31,22 +31,53 @@
                 <td class="qte col-md-1"><?php echo $a->get('quantite_stock') ?></td>
                 <td class="poids col-md-1"><?php echo $a->get('poids') ?></td>
                 <td class="prix col-md-1"><?php echo $a->get('prix') ?></td>
-                <td class="col-md-2"><a href="c_article/btn_supprimer?id=<?php echo $a->get('id_article') ?>" id="btnDelete" 
-                    class="btn btn-danger">Supprimer</a>
-                <input type="button" id="btnUpdate" value="Modifier" class="btn btn-warning" onclick="btnModif(this)"></td>
+                <td class="col-md-2"><a href="c_article/btn_supprimer?id=<?php echo $a->get('id_article') ?>" 
+                                    id="btnDelete" class="btn btn-danger">Supprimer</a>
+                <input type="button" id="btnUpdate" value="Modifier" class="btn btn-warning" 
+                       onclick="btnModif(this, <?php echo $a->get('id_article') ?>)"></td>
+                
             </tr>
+            <input id="idStock" type="hidden" value=""/>
         <?php endforeach; ?>    
 	
 	</tbody>
 </table>
-    <input type="button" id="btnCancel" value="Annuler" style="display:none" class="btn btn-warning" onclick="btnUpdateEvent()">
-    <input type="button" id="btnAdd" value="Ajouter" class="btn btn-success" onclick="btnAddEvent()"> 
+    <input type="button" id="btnCancel" value="Annuler" style="display:none" 
+           class="btn btn-warning" onclick="btnUpdateEvent()">
+    <input type="button" id="btnAdd" value="Ajouter" 
+           class="btn btn-success" onclick="btnAddEvent()"> 
     <!--<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>-->
 </div>
    <script>
     
-            function btnModif(btn_modif)
+    function btnModif(btn_modif, id)
     {
+   
+        if(id != undefined){
+            document.getElementById('idStock').value=id;
+        }
+        
+        $('#btnAdd').attr('onclick', '');
+        $('#btnAdd').attr('onclick', 'btnModif()');
+        
+        if(document.getElementById('btnAdd').value==='Valider')
+        {      
+         
+         
+            var url = URI + 'ajax/sauvegarderModificationArticle';
+            data = {
+                
+            'id_article' : document.getElementById('idStock').value.toString(),    
+            'nom' : $('.nom').children('input').val(),
+            'qte' : $('.qte').children('input').val(),
+            'poids' : $('.poids').children('input').val(),
+            'prix' : $('.prix').children('input').val()}
+
+            console.log(data);
+            requeteAjax(url, data);
+            location.reload();
+        }
+
 
         document.getElementById("btnCancel").value='Annuler';
         document.getElementById("btnAdd").value='Valider';  

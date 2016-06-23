@@ -46,4 +46,9 @@ class M_Article extends MY_Model{
         return $this->M_bdArticle->delete($id);
     }
     
+    public function update($id)
+    {
+        return $this->M_bdArticle->update($id);
+    }
+    
 }

@@ -41,5 +41,9 @@ class M_Article extends MY_Model{
         
     }
         
+    public function delete($id)
+    {
+        return $this->M_bdArticle->delete($id);
+    }
     
 }

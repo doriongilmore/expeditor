@@ -69,7 +69,7 @@
             
             var url = URI + 'ajax/sauvegarderArticle';
             data = {
-            'nom' : $('#newNom').children('select').val(),
+            'nom' : $('#newNom').children('input').val(),
             'qte' : $('#newQte').children('input').val(),
             'poids' : $('#newPoids').children('input').val(),
             'prix' : $('#newPrix').children('input').val()

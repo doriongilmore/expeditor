@@ -51,18 +51,24 @@
 //        console.log(btn_modif);
         $('#btnCancel').attr('style', '');
         var row = $(btn_modif).parent().parent();
+        document.getElementById("btnAdd").value='Valider';
+        $('#btnUpdate').attr('disabled', '');
 //        console.log(row);
-        row.children('.id_profil').parent().append('<input type="text" \n\
-                            value="'+row.children('.id_profil').html()+'"/>');
+
+        row.children('.id_profil')
+                .html('<input type="text" value="'+row.children('.id_profil').html()+'"/>');
         row.children('.id_profil').attr('style', '');
-        row.children('.prenom').parent().append('<input type="text" \n\
-                            value="'+row.children('.prenom').html()+'"/>');
+        
+        row.children('.prenom')
+                .html('<input type="text" value="'+row.children('.prenom').html()+'"/>');
         row.children('.prenom').attr('style', '');
-        row.children('.nom').parent().append('<input type="text" \n\
-                            value="'+row.children('.nom').html()+'"/>');
+        
+        row.children('.nom')
+                .html('<input type="text" value="'+row.children('.nom').html()+'"/>');
         row.children('.nom').attr('style', '');
-        row.children('.login').parent().append('<input type="text" \n\
-                            value="'+row.children('.login').html()+'"/>');
+        
+        row.children('.login')
+                .html('<input type="text" value="'+row.children('.login').html()+'"/>');
         row.children('.login').attr('style', '');
     }
     

@@ -597,7 +597,6 @@ class CI_Upload {
 		}
 
 		$ext = strtolower(ltrim($this->file_ext, '.'));
-
 		if ( ! in_array($ext, $this->allowed_types))
 		{
 			return FALSE;
@@ -620,6 +619,8 @@ class CI_Upload {
 		}
 
 		$mime = $this->mimes_types($ext);
+                var_dump($mime);
+                var_dump($this->file_type);
 
 		if (is_array($mime))
 		{

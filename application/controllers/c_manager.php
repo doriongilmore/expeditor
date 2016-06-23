@@ -40,46 +40,60 @@ class C_Manager extends MY_Controller {
         $this->_loadView('manager/affichage_principale');
     }
 
+    
+    public function importer_commandes(){
+        if (!empty($_FILES)) {
+            try {
+                $csv = preg_match('/([.]csv)$/', $_FILES['upload']['name']);
+                $bool = $this->importer_fichier_temporaire('upload');
+            } catch (Exception $ex) {
+                $bool = $ex->getMessage();
+            }
+            if($bool === true){ // fichier importé avec succès
+                $filepath = APPLICATION_URI . '/web/files/import_commande.' . ($csv?'csv':'xls');
+//                $ext = pathinfo($filepath, PATHINFO_EXTENSION);
+                var_dump($filepath);
+            }else{ // afficher erreur à l'utilisateur
+                $this->data['message']['error'] = $bool;
+            } 
+        }
+        
+        
+        $this->_loadView('manager/import');
+    }
+    
+    
     function importer_fichier_temporaire($document)
     {
-        $tmp_filename = str_replace(array('(',')',' '),array('','','_'),convert_accented_characters($_POST['_'.$document])) ;
-
-        $upload_path = './web/files/';
-        $config['file_name'] = $tmp_filename;
+        $config['file_name'] = 'import_commande';
         $config['remove_spaces'] = TRUE;
         $config['overwrite'] = TRUE;
-        $config['upload_path'] = './web/files/temp/';
-        $config['allowed_types'] = 'xls|xlsm|xlsx|xlsxm|csv';
+        $config['upload_path'] = 'web/files';
+        $config['allowed_types'] = '*';
         
         $this->load->library('upload', $config);
         
         if ( ! $this->upload->do_upload($document)){
-            $link1 = $config['upload_path'].$tmp_filename;
-            $link2 = $upload_path.$tmp_filename;
-            
-            if(file_exists($link1) || file_exists($link2))
-                    return true;
             throw new Exception($this->upload->display_errors());
         }
-        else
-            return true;//Chargement réussit
+        return true;//Chargement réussit
     }
     
     
-    function importer_fichier($document, $id, $traitement = false)
-    {
-        $document = str_replace(array('(',')',' '),array('','','_'),convert_accented_characters($document)) ;
-        
-        
-        $tmp = './web/files/temp/'.($document);
-        $upload_path = './web/files/'.($document);
-        $bool_copy = copy($tmp, $upload_path);
-
-        if(file_exists($tmp))//si le fichier existe on le supprime
-            unlink($tmp);//suppression du fichier
-        
-        return $document;
-    }
+//    function importer_fichier($document, $id, $traitement = false)
+//    {
+//        $document = str_replace(array('(',')',' '),array('','','_'),convert_accented_characters($document)) ;
+//        
+//        
+//        $tmp = './web/files/temp/'.($document);
+//        $upload_path = './web/files/'.($document);
+//        $bool_copy = copy($tmp, $upload_path);
+//
+//        if(file_exists($tmp))//si le fichier existe on le supprime
+//            unlink($tmp);//suppression du fichier
+//        
+//        return $document;
+//    }
         
 }
 

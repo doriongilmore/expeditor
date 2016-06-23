@@ -40,7 +40,7 @@ class C_erreur extends MY_Controller
 //    $this->load->library('session');
     $this->data['titre']  = '404';
     
-    if ($this->session->userdata('identifiant'))
+    if ($_SESSION['user_id'])
       $this->data['h2']     = 'La page que vous demandez est inexistante.';
     else
       $this->data['h2']     = 'La page demandée est inexistante.<br />'.
@@ -70,7 +70,7 @@ class C_erreur extends MY_Controller
 //    $this->load->library('session');
     $this->data['titre']  = '403';
     
-    if ($this->session->userdata('identifiant'))
+    if ($_SESSION['user_id'])
     {
       $this->data['h2']     = 'Vous n\'êtes pas autorisé à  visualiser cette page.';
       $light = false; //je fait apparaitre le menu car on est co mais on Ã  pas les droit d'accÃ¨der a la page

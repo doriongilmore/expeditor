@@ -104,7 +104,7 @@ abstract class MY_Controller extends CI_Controller
 
         $user = $this->User->getById($_SESSION['user_id']);
 
-        $this->session->set_userdata('identifiant', $user->identifiant);
+        $this->session->set_userdata('identifiant', $user->id_utilisateur);
     }
     elseif ( ! isset($_SESSION['user_id']) && $this->session->userdata('identifiant'))
       $this->session->unset_userdata('identifiant');

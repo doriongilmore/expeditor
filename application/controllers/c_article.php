@@ -12,6 +12,14 @@ class C_Article extends MY_Controller {
             $this->_loadView('manager/affichage_article');
 	}
         
+        public function btn_supprimer()
+        {
+            $this->load->model('simple/M_Article');
+            $this->M_Article->delete($_GET['id']);
+            $this->data['message']['valid'] = "OK";
+            redirect('c_article/affichage');
+        }
+        
 }
 
 /* End of file welcome.php */

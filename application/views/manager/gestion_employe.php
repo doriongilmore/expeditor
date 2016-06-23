@@ -48,7 +48,7 @@
     
     function btnAddEvent()
     {      
-        if(document.getElementById("btnUpdate").value==='Modifier'){
+        if(document.getElementById("btnAdd").value==='Ajouter'){
 //            document.getElementById("btnCancel").style='display:';
             $('#btnCancel').attr('style', '');
             document.getElementById("btnAdd").value='Valider'; 
@@ -93,7 +93,7 @@
     
     function btnUpdateEvent()
     {      
-        if(document.getElementById("btnUpdate").value==='Modifier'){
+        if(document.getElementById("btnAdd").value==='Ajouter'){
             document.getElementById("btnUpdate").value='Annuler';
             document.getElementById("btnAdd").value='Valider'; 
   

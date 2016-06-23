@@ -44,4 +44,20 @@ class ajax extends MY_Controller {
             echo 'false';
     }
     
+        public function sauvegarderArticle(){
+        
+        $this->load->model('simple/M_Article');
+        $newArticle = new M_Article();
+        $newArticle->set('nom', $_POST['nom']);
+        $newArticle->set('quantite_stock', $_POST['qte']);
+        $newArticle->set('poids', $_POST['poids']);
+        $newArticle->set('prix', $_POST['prix']);
+     
+        $res = $this->M_bdArticle->insert($newArticle);
+        if (is_null($res))
+            echo 'true';
+        else
+            echo 'false';
+    }
+    
 }

@@ -22,6 +22,26 @@
                 </table>
             </div><br/>
             
+            <h3>Importer les commandes</h3>
+            
+            <?php echo form_open_multipart('') ?>
+            <?php // echo form_upload('Fichier Commandes Clients', array('name'=>'upload','class' => 'parcourir', 'id'=>'file_upload')) ?>
+            <div class="form_row">
+                <br/>
+                <div class="field">
+                    <?php echo form_upload(array('name'=>'upload','class' => 'parcourir', 'id'=>'file_upload'));?>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div class="btn-group-sm">
+            <!--<a href id="btnUpdate" value="Modifier" class="btn btn-warning">Modifier</a>-->
+                <input type="submit" value="Importer" class=" btn btn-default"  />
+            </div>
+            <?php echo form_close() ?>
+            <br/>
+            
             <h3>Toutes les commandes à traiter</h3>
             <div id="Commandes">
                 <div class="row">

@@ -8,6 +8,7 @@
         <div class="label_field">
             <label>Fichier Commandes Clients</label>   
         </div>
+        <br/>
         <div class="field">
             <?php echo form_upload(array('name'=>'upload','class' => 'parcourir', 'id'=>'file_upload'));?>
         </div>
@@ -17,7 +18,7 @@
     <br/>
     <div class="btn-group-sm">
     <!--<a href id="btnUpdate" value="Modifier" class="btn btn-warning">Modifier</a>-->
-        <input type="submit" value="Importer" class="btn btn-default"  />
+        <input type="submit" value="Importer" class=" btn btn-default"  />
     </div>
     <?php echo form_close() ?>
     

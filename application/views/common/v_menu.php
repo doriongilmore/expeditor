@@ -3,7 +3,7 @@
 <div id="MainNavigation">
     <div class="wrap">
         <ul class="mainMenu cssonly" id="Menu1">
-            <li><a href="" class="">Accueil</a></li>
+            <li><a href="" class="">Commandes</a></li>
                
 	    <?php
 	if (isset($user) && !is_null($user)) {

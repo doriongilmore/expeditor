@@ -156,4 +156,8 @@ class M_Commandes extends MY_Model{
     public function update($data) {
         return $this->M_bdCommandes->update($data);
     }
+    
+    public function insert($data) {
+        return $this->M_bdCommandes->insert($data);
+    }
 }

@@ -45,6 +45,10 @@ class M_Ligne_Commandes  extends MY_Model{
         }
      }
      
+     public function initialisation($tabInfo) {
+         return parent::initialisation($tabInfo);
+     }
+     
     public function getAll(){
         return $this->array_initialisation($this->M_bdLigneCommandes->getAll());
     }
@@ -59,5 +63,9 @@ class M_Ligne_Commandes  extends MY_Model{
     
     public function update($data){
         return $this->M_bdLigneCommandes->update($data);
+    }
+    
+    public function insert($data){
+        return $this->M_bdLigneCommandes->insert($data);
     }
 }

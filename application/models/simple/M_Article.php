@@ -27,13 +27,18 @@ class M_Article extends MY_Model{
     }
     
     
-     public function get($key) {
+    public function get($key) {
         if (array_key_exists($key, get_object_vars($this))) 
             return parent::get($key);
     }
     
     public function getById($id) {
         return $this->initialisation($this->M_bdArticle->getById($id));
+    }
+    
+    public function getByNom($nom) {
+        $std = $this->M_bdArticle->getByNom($nom);
+        return $this->initialisation($std[0]);
     }
     
     public function getAll(){

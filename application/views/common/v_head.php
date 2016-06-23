@@ -19,13 +19,13 @@
 	
     <!-- Appel des CSS -->
     <link href="<?php echo APPLICATION_URI; ?>/web/css/style.css" rel="stylesheet" type="text/css" media="screen" />  
-    
     <link href="<?php echo APPLICATION_URI; ?>/web/css/site_blocsModulaires.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="<?php echo APPLICATION_URI; ?>/web/css/entete_tableau.css" rel="stylesheet" type="text/css" media="screen" />      
     <link href="<?php echo APPLICATION_URI; ?>/web/css/bootstrap.css" rel="stylesheet" type="text/css"  />  
     <link href="<?php echo APPLICATION_URI; ?>/web/css/maLibrairie.css" rel="stylesheet" type="text/css"  />
     <link href="<?php echo APPLICATION_URI; ?>/web/css/myStyle.css" rel="stylesheet" type="text/css"  />  
-	
+    <link href="<?php echo APPLICATION_URI; ?>/web/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="screen" />   
+    
     <!-- Appel des JS -->
     <script src="<?php echo APPLICATION_URI; ?>/web/js/jQuery.js" type="text/javascript"></script>
     <script src="<?php echo APPLICATION_URI; ?>/web/js/bootstrap.js" type="text/javascript"></script>

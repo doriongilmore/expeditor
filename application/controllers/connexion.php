@@ -102,7 +102,14 @@ class Connexion extends MY_Controller
 
     // $this->log_access->setAuthMsg('deconnexion');
     
-    // déblocage des commandes en cours ?
+    // déblocage des commandes en cours ? NON je peux allez jouer ? 
+    if (isset($_SESSION['id_commande_en_cours']) && !is_null($_SESSION['id_commande_en_cours'] )){
+        $this->load->model('simple/M_Commandes');
+        $res = $this->M_Commandes->liberer($_SESSION['id_commande_en_cours']);
+        
+        unset($_SESSION['id_commande_en_cours']);
+    }
+    
     
     redirect('','refresh');
   }

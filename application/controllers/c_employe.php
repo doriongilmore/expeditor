@@ -26,6 +26,7 @@ class C_Employe extends MY_Controller {
                 }
             }
             $this->data['commande'] = $this->M_Commandes->getCommandeATraiter();
+            $_SESSION['id_commande_en_cours'] = $this->data['commande']->get('id_commande');
             $this->data['client'] = $this->data['commande']->get('client');
             $this->data['lignes'] = $this->data['commande']->get('lignes_commande');
             

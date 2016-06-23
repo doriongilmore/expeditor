@@ -39,7 +39,7 @@
                                         <td class="etat"><?php echo $m_commandes->get('etat') ; ?></td>
                                         <td class="utilisateur"><?php echo (!is_null($m_utilisateur) )?$m_utilisateur->get('nom') . ' ' . $m_utilisateur->get('prenom') : " --- "; ?></td>
                                         <!--<td><?php if(!is_null($m_utilisateur)  ){echo $m_utilisateur->get('nom') ;}else{echo " --- ";} ?></td>-->
-                                        <td><button id="btnConsulter" href class="btn btn-info consulter" onclick="OnClickConsulter(<?php echo $m_commandes->get('id_commande') ;  ?>)">Consulter</button></td>
+                                        <td><button id="btnConsulter" href class="btn btn-info consulter" onclick="OnClickConsulter(<?php echo $m_commandes->get('id_commande') ;  ?>)"><i class="fa fa-beer" aria-hidden="true"></i></button></td>
                                         <?php if($m_commandes->get('id_etat')== ETAT_EN_COURS){ ?>
                                         <td><button id="btnLiberer" href class="btn btn-danger liberer" onclick="OnClickLiberer(<?php echo $m_commandes->get('id_commande') ;  ?>, this )">Libérer</button></td>
                                         <?php }else{ ?>

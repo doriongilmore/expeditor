@@ -23,7 +23,7 @@ class Welcome extends MY_Controller {
             if ($u->get('id_profil') == PROFIL_EMPLOYE)
                 redirect ('c_employe/affichage');
             elseif ($u->get('id_profil') == PROFIL_MANAGER)
-                redirect ('c_manager/affichageCommande');
+                redirect ('c_manager/affichageStatistique');
 	}
 }
 

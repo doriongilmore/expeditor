@@ -26,14 +26,14 @@
 	<tbody>
        <?php foreach ($employes as $e): ?>
             <tr>
-                <td><?php echo $e->get('id_utilisateur') ?></td>
-                <td><?php echo $e->get('id_profil') ?></td>
-                <td><?php echo $e->get('prenom') ?></td>
-                <td><?php echo $e->get('nom') ?></td>
-                <td><?php echo $e->get('login') ?></td>
+                <td class="id_utilisateur"><?php echo $e->get('id_utilisateur') ?></td>
+                <td class="id_profil"><?php echo $e->get('id_profil') ?></td>
+                <td class="prenom"><?php echo $e->get('prenom') ?></td>
+                <td class="nom"><?php echo $e->get('nom') ?></td>
+                <td class="login"><?php echo $e->get('login') ?></td>
                 <td><a href="c_gestion_employe/btn_supprimer?id=<?php echo $e->get('id_utilisateur') ?>" id="btnDelete" 
                        class="btn btn-danger">Supprimer</a>
-                <input type="button" id="btnUpdate" value="Modifier" class="btn btn-warning" onclick="btnUpdateEvent()"></td>
+                <input type="button" id="btnUpdate" value="Modifier" class="btn btn-warning" onclick="btnModif(this)"></td>
             </tr>
         <?php endforeach; ?>    
 	
@@ -45,6 +45,27 @@
 </div>
     
     <script>
+   
+        function btnModif(btn_modif)
+    {
+//        console.log(btn_modif);
+        $('#btnCancel').attr('style', '');
+        var row = $(btn_modif).parent().parent();
+//        console.log(row);
+        row.children('.id_profil').parent().append('<input type="text" \n\
+                            value="'+row.children('.id_profil').html()+'"/>');
+        row.children('.id_profil').attr('style', '');
+        row.children('.prenom').parent().append('<input type="text" \n\
+                            value="'+row.children('.prenom').html()+'"/>');
+        row.children('.prenom').attr('style', '');
+        row.children('.nom').parent().append('<input type="text" \n\
+                            value="'+row.children('.nom').html()+'"/>');
+        row.children('.nom').attr('style', '');
+        row.children('.login').parent().append('<input type="text" \n\
+                            value="'+row.children('.login').html()+'"/>');
+        row.children('.login').attr('style', '');
+    }
+    
     
     function btnAddEvent()
     {      
@@ -91,10 +112,10 @@
     
     
     
-    function btnUpdateEvent()
-    {      
+    function btnUpdateEvent(btn_modif)
+    {            
         if(document.getElementById("btnAdd").value==='Ajouter'){
-            document.getElementById("btnUpdate").value='Annuler';
+            document.getElementById("btnCancel").value='Annuler';
             document.getElementById("btnAdd").value='Valider'; 
   
         }
@@ -103,12 +124,6 @@
             document.getElementById("btnAdd").value='Ajouter'; 
             location.reload();
         }
-   
-   
-   
-   
-   
-
     }
    
     

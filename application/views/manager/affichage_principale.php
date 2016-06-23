@@ -36,8 +36,8 @@
                                     ?>
                                     <tr>
                                         <td><?php echo $m_commandes->get('num_commande') ; ?></td>
-                                        <td><?php echo $m_commandes->get('etat') ; ?></td>
-                                        <td><?php echo (!is_null($m_utilisateur) )?$m_utilisateur->get('nom') . ' ' . $m_utilisateur->get('prenom') : " --- "; ?></td>
+                                        <td class="etat"><?php echo $m_commandes->get('etat') ; ?></td>
+                                        <td class="utilisateur"><?php echo (!is_null($m_utilisateur) )?$m_utilisateur->get('nom') . ' ' . $m_utilisateur->get('prenom') : " --- "; ?></td>
                                         <!--<td><?php if(!is_null($m_utilisateur)  ){echo $m_utilisateur->get('nom') ;}else{echo " --- ";} ?></td>-->
                                         <td><button id="btnConsulter" href class="btn btn-info consulter" onclick="OnClickConsulter(<?php echo $m_commandes->get('id_commande') ;  ?>)">Consulter</button></td>
                                         <?php if($m_commandes->get('id_etat')== ETAT_EN_COURS){ ?>
@@ -66,9 +66,10 @@
     function OnClickLiberer(id_commande, object){
         var url = URI + 'ajax/liberer/'+id_commande;
         var res = requeteAjax(url);
-        //location.reload();
-        alert("alerte");
-      
+       $(object).removeClass("btn-danger");
+       $(object).addClass("disabled");
+       $(object).parent().parent().children(".etat").html("En attente");
+       $(object).parent().parent().children(".utilisateur").html(" --- ");
         return res;
     }
     

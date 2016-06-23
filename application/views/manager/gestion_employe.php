@@ -54,18 +54,16 @@
         $('#btnAdd').attr('onclick', 'btnModif()');
         
         if(document.getElementById('btnAdd').value==='Valider')
-        {
-            alert($('.id_utilisateur').children('input').val());        
+        {       
             var url = URI + 'ajax/sauvegarderModificationEmploye';
             data = {
                 
             'id_utilisateur' : $('.id_utilisateur').children('input').val(),    
             'profil' : $('.id_profil').children('input').val(),
             'prenom' : $('.prenom').children('input').val(),
-            'nom' : $('.nom').children('input').val()
-            'login' : $('.login').children('input').val()}
-        
-            var_dump(data);
+            'nom' : $('.nom').children('input').val()}
+
+            console.log(data);
             requeteAjax(url, data);
             location.reload();
         }
@@ -96,11 +94,6 @@
         row.children('.nom')
                 .html('<input type="text" value="'+row.children('.nom').html()+'"/>');
         row.children('.nom').attr('style', '');
-        
-        row.children('.login')
-                .html('<input type="text" value="'+row.children('.login').html()+'"/>');
-        row.children('.login').attr('style', '');
-
     }
     
     

@@ -34,7 +34,7 @@ class M_bdClient extends MY_Model {
         $this->db->select('*')
                 ->from($this->main_table)
                 ->where('nom', $nom)
-                ->where('CONCAT(adresse_1, " - ", code_postal, " ", ville)', $adr);
+                ->where('CONCAT(adresse_1, " - ", code_postal, " ", ville) = ', $adr);
 //                ->where('adresse_1', $adr);
         return $this->db->get()->result();
     }

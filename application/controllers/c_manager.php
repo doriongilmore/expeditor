@@ -57,28 +57,64 @@ class C_Manager extends MY_Controller {
 //                    $this->load->library('xls_converter');
 //                    $filepath = $this->xls_converter->convert_xls_to_csv($filepath);
 //                }
+                $this->load->model('simple/M_Ligne_Commandes');
                 $this->load->model('simple/M_Commandes');
                 $this->load->model('simple/M_Client');
+                $this->load->model('simple/M_Article');
                 $handle = fopen($filepath, 'r');
                 $cpt = 0;
                 while ($arrayData = fgetcsv($handle, 1000, ',')){
                     if ($cpt !== 0) { // ne pas gérér l'entete
                         $com = new M_Commandes();
                         $date_commande = $arrayData[0]; //date
-                        $com->set('date_demande', $date_commande);
+                        $tmp_date = DateTime::createFromFormat('d/m/Y H:i:s', $date_commande);
+                        $com->set('date_demande', date_format($tmp_date, FORMAT_DATE_COMMANDE));
                         $numéro_commande = $arrayData[1]; //numéro
                         $com->set('num_commande', $numéro_commande);
                         
                         
                         
-                        $nom_client = $arrayData[2]; //nom
-//                        $com->set('date_demande', $nom_client);
-                        $adresse_client = $arrayData[3]; //adresse
-//                        $com->set('date_demande', $adresse_client);
-                        $this->M_Client->getByNomAdresse($nom_client, $adresse_client);
+                        $nom_client = trim($arrayData[2]); //nom
+                        $adresse_client = trim($arrayData[3]); //adresse
                         
+                        $clients = $this->M_Client->getByNomAdresse($nom_client, $adresse_client);
+                        if (count($clients) == 0) {
+                            $id_client = $this->M_Client->insert($nom_client, $adresse_client);
+                        }
+                        if (isset($id_client))
+                            $com->set('id_client', $id_client);
+                        else
+                            $com->set('id_client', $clients[0]->get('id_client'));
+                        unset($id_client); // supprimer l'id pour le prochain passage
+                        
+                        $com->set('id_etat', ETAT_ATTENTE);
+                        
+                        $id_commande = $this->M_Commandes->insert($com);
                         
                         $articles_commande = $arrayData[4]; //séparés par un ;
+                        $array_article = explode(';', $articles_commande);
+                        
+                        foreach ($array_article as $art) {
+//                            $test = preg_split('/([a-z ]*)(\([0-9]*\))/i', $art);
+                            $tmp_arr = explode('(', $art);
+                            $libelle_article = trim($tmp_arr[0]);
+                            $tmp_arr = explode(')', $tmp_arr[1]);
+                            $nb_article = trim($tmp_arr[0]);
+                            
+                            $a = $this->M_Article->getByNom($libelle_article);
+                            if (!is_null($a)) {
+                                
+//                            $lc = new M_Ligne_Commandes();
+                                $lc = $this->M_Ligne_Commandes->initialisation(array(
+                                    'id_ligne_commande' => null,
+                                    'id_commande' => $id_commande,
+                                    'id_article' => $a->get('id_article'),
+                                    'quantite_demande' => $nb_article,
+                                    'quantite_reelle' => 0,   
+                                ));
+                                $this->M_Ligne_Commandes->insert($lc);
+                            }
+                        }
                     }
                     $cpt++;
                 }

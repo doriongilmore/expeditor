@@ -48,4 +48,9 @@ class M_Client extends MY_Model{
         
     }
     
+     public function getByNomAdresse($nom,$adr){
+       return $this->initialisation($this->M_bdClient->getByNomAdresse($nom,$adr));
+         
+     }
+    
 }

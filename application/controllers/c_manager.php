@@ -52,8 +52,37 @@ class C_Manager extends MY_Controller {
             }
             if($bool === true){ // fichier importé avec succès
                 $filepath = APPLICATION_URI . '/web/files/import_commande.' . ($csv?'csv':'xls');
+                
+//                if (!$csv){
+//                    $this->load->library('xls_converter');
+//                    $filepath = $this->xls_converter->convert_xls_to_csv($filepath);
+//                }
+                $this->load->model('simple/M_Commandes');
+                $this->load->model('simple/M_Client');
+                $handle = fopen($filepath, 'r');
+                $cpt = 0;
+                while ($arrayData = fgetcsv($handle, 1000, ',')){
+                    if ($cpt !== 0) { // ne pas gérér l'entete
+                        $com = new M_Commandes();
+                        $date_commande = $arrayData[0]; //date
+                        $com->set('date_demande', $date_commande);
+                        $numéro_commande = $arrayData[1]; //numéro
+                        $com->set('num_commande', $numéro_commande);
+                        
+                        
+                        
+                        $nom_client = $arrayData[2]; //nom
+//                        $com->set('date_demande', $nom_client);
+                        $adresse_client = $arrayData[3]; //adresse
+//                        $com->set('date_demande', $adresse_client);
+                        $this->M_Client->getByNomAdresse($nom_client, $adresse_client);
+                        
+                        
+                        $articles_commande = $arrayData[4]; //séparés par un ;
+                    }
+                    $cpt++;
+                }
 //                $ext = pathinfo($filepath, PATHINFO_EXTENSION);
-                var_dump($filepath);
             }else{ // afficher erreur à l'utilisateur
                 $this->data['message']['error'] = $bool;
             } 

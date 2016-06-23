@@ -62,9 +62,8 @@
             'id_utilisateur' : $('.id_utilisateur').children('input').val(),    
             'profil' : $('.id_profil').children('input').val(),
             'prenom' : $('.prenom').children('input').val(),
-            'nom' : $('.nom').children('input').val(),
-            'login' : $('.login').children('input').val(),
-            'password' : 'password'}
+            'nom' : $('.nom').children('input').val()
+            'login' : $('.login').children('input').val()}
         
             var_dump(data);
             requeteAjax(url, data);

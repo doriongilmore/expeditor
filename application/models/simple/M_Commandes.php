@@ -120,6 +120,23 @@ class M_Commandes extends MY_Model{
         $req = $this->M_bdCommandes->getFirstCommande();
         return $this->initialisation($req);
     }
+    
+     public function setUrgent($id_commande){
+        $com = $this->getById($id_commande);
+         $com->id_etat = ETAT_URGENT;
+        $com->etat = "Urgent";
+        $this->update($com);
+    }
+    
+    public function liberer($id_commande){
+        $com = $this->getById($id_commande);
+        $com->id_etat = ETAT_ATTENTE;
+        $com->id_utilisateur_traite = null;
+        $res =  $this->update($com);
+        $com->etat = "En attente";
+        return $res;
+        
+    }
 
      public function getAll(){
          return $this->array_initialisation($this->M_bdCommandes->getAll());

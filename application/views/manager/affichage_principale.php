@@ -1,9 +1,9 @@
  <div id="Commande">
-        <form method="post" action="">
+        <!--<form method="post" action="">-->
             
             <div id="Statistique">
                 
-                <h2>Statistique</h2>
+                <h3>Statistique</h3>
                 <table class="table table-striped table-bordered">
                     <thead class="">
                     <th>Employé</th><th>Nombre de commande</th>
@@ -20,15 +20,15 @@
                            <?php } ?>
                     </tbody>
                 </table>
-            </div>
+            </div><br/>
             
-            
+            <h3>Toutes les commandes à traiter</h3>
             <div id="Commandes">
                 <div class="row">
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered">
                             <thead class="">
-                                <th>N° Commandes</th><th>Statut</th><th>Employé</th><th></th>
+                                <th>N° Commandes</th><th>Statut</th><th>Employé</th><th></th><th></th>
                             </thead>
                             <tbody id="myTable">
                                 <?php foreach($commandes as $m_commandes){ 
@@ -39,10 +39,12 @@
                                         <td><?php echo $m_commandes->get('etat') ; ?></td>
                                         <td><?php echo (!is_null($m_utilisateur) )?$m_utilisateur->get('nom') . ' ' . $m_utilisateur->get('prenom') : " --- "; ?></td>
                                         <!--<td><?php if(!is_null($m_utilisateur)  ){echo $m_utilisateur->get('nom') ;}else{echo " --- ";} ?></td>-->
-                                        <td><button id="btnConsulter" href class="btn btn-info consulter">Consulter</button></td>
+                                        <td><button id="btnConsulter" href class="btn btn-info consulter" onclick="OnClickConsulter(<?php echo $m_commandes->get('id_commande') ;  ?>)">Consulter</button></td>
                                         <?php if($m_commandes->get('id_etat')== ETAT_EN_COURS){ ?>
-                                        <td><button id="btnLiberer" href class="btn btn-danger liberer">Libérer</button></td>
-                                        <?php }?>
+                                        <td><button id="btnLiberer" href class="btn btn-danger liberer" onclick="OnClickLiberer(<?php echo $m_commandes->get('id_commande') ;  ?>, this )">Libérer</button></td>
+                                        <?php }else{ ?>
+                                         <td><button id="btnLiberer" href class="btn disabled liberer" >Libérer</button></td>
+                                       <?php }?>
                                     </tr>
                                 <?php } ?>
                             </tbody>
@@ -56,10 +58,25 @@
         </div>
             
             
-        </form>
+        <!--</form>-->
     </div>
 
 <script>
+    
+    function OnClickLiberer(id_commande, object){
+        var url = URI + 'ajax/liberer/'+id_commande;
+        var res = requeteAjax(url);
+        //location.reload();
+        alert("alerte");
+      
+        return res;
+    }
+    
+    function OnClickConsulter(id_commande){
+        document.location.href="c_manager/affichageCommande/"+id_commande
+        
+    }
+    
 $.fn.pageMe = function(opts){
     var $this = this,
         defaults = {

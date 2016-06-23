@@ -36,9 +36,6 @@
 <script>
     function liberer(id_commande){
         var url = URI + 'ajax/liberer/'+id_commande;
-
-        
-        
         var res = requeteAjax(url);
        return res;
     }

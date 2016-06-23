@@ -18,14 +18,14 @@ class C_Manager extends MY_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 
-    public function affichageCommande()
+    public function affichageCommande($id)
     {
         $this->load->model('simple/M_Commandes');
 
-        $this->data['commande'] = $this->M_Commandes->getFirstCommande();
-        //$this->data['commandes'] = $this->MCommandes->getyId($id);
-        $this->data['client'] = $this->data['commande']->get('client');
-        $this->data['lignes'] = $this->data['commande']->get('lignes_commande');
+        //$this->data['commande'] = $this->M_Commandes->getFirstCommande();
+        $this->data['commandes'] = $this->M_Commandes->getById($id);
+        $this->data['client'] = $this->data['commandes']->get('client');
+        $this->data['lignes'] = $this->data['commandes']->get('lignes_commande');
         $this->_loadView('manager/affichage_commande');
     }
 

@@ -27,14 +27,12 @@
             <?php echo form_open_multipart('') ?>
             <?php // echo form_upload('Fichier Commandes Clients', array('name'=>'upload','class' => 'parcourir', 'id'=>'file_upload')) ?>
             <div class="form_row">
-                <br/>
+                
                 <div class="field">
                     <?php echo form_upload(array('name'=>'upload','class' => 'parcourir', 'id'=>'file_upload'));?>
                 </div>
             </div>
-            <br/>
-            <br/>
-            <br/>
+            <br/><br/><br/>
             <div class="btn-group-sm">
             <!--<a href id="btnUpdate" value="Modifier" class="btn btn-warning">Modifier</a>-->
                 <input type="submit" value="Importer" class=" btn btn-default"  />
@@ -48,7 +46,7 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered">
                             <thead class="">
-                                <th>N° Commandes</th><th>Statut</th><th>Employé</th><th></th><th></th>
+                                <th>N° Commandes</th><th>Statut</th><th>Employé</th><th>Consulter</th><th>Libérer</th><th>Urgent</th>
                             </thead>
                             <tbody id="myTable">
                                 <?php foreach($commandes as $m_commandes){ 
@@ -58,12 +56,43 @@
                                         <td><?php echo $m_commandes->get('num_commande') ; ?></td>
                                         <td class="etat"><?php echo $m_commandes->get('etat') ; ?></td>
                                         <td class="utilisateur"><?php echo (!is_null($m_utilisateur) )?$m_utilisateur->get('nom') . ' ' . $m_utilisateur->get('prenom') : " --- "; ?></td>
-                                        <!--<td><?php if(!is_null($m_utilisateur)  ){echo $m_utilisateur->get('nom') ;}else{echo " --- ";} ?></td>-->
-                                        <td><button id="btnConsulter" href class="btn btn-info consulter" onclick="OnClickConsulter(<?php echo $m_commandes->get('id_commande') ;  ?>)"><i class="fa fa-beer" aria-hidden="true"></i></button></td>
+                                        
+                                        <td>
+                                            <button id="btnConsulter" href class="btn btn-default consulter"
+                                                    onclick="OnClickConsulter(
+                                                        <?php echo $m_commandes->get('id_commande') ;  ?>
+                                                    )"><i class="fa fa-file-o" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
                                         <?php if($m_commandes->get('id_etat')== ETAT_EN_COURS){ ?>
-                                        <td><button id="btnLiberer" href class="btn btn-danger liberer" onclick="OnClickLiberer(<?php echo $m_commandes->get('id_commande') ;  ?>, this )">Libérer</button></td>
+                                        <td>
+                                            <button id="btnLiberer" href class="btn btn-warning liberer" 
+                                                    onclick="OnClickLiberer(
+                                                        <?php echo $m_commandes->get('id_commande') ;  ?>, this 
+                                                    )"><i class="fa fa-unlock" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
                                         <?php }else{ ?>
-                                         <td><button id="btnLiberer" href class="btn disabled liberer" >Libérer</button></td>
+                                        <td>
+                                             <button id="btnLiberer" href class="btn disabled liberer" >
+                                                 <i class="fa fa-unlock" aria-hidden="true"></i>
+                                             </button>
+                                        </td>
+                                       <?php }?>
+                                          <?php if($m_commandes->get('id_etat') != ETAT_URGENT){ ?>
+                                            <td>
+                                                <button id="btnUrgent" href class="btn btn-default urgent" 
+                                                        onclick="OnClickUrgent(
+                                                            <?php echo $m_commandes->get('id_commande') ;  ?>, this 
+                                                        )"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                                </button>
+                                            </td>
+                                           <?php }else{ ?>
+                                         <td>
+                                             <button id="btnLiberer" href class="btn btn-danger disabled liberer" >
+                                                 <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                             </button>
+                                         </td>
                                        <?php }?>
                                     </tr>
                                 <?php } ?>
@@ -93,10 +122,22 @@
         return res;
     }
     
+     
+   function OnClickUrgent(id_commande, object){
+        var url = URI + 'ajax/setUrgent/'+id_commande;
+        var res = requeteAjax(url);
+       $(object).removeClass("btn-default");
+       $(object).addClass("btn-danger");
+       $(object).addClass("disabled");
+      $(object).parent().parent().children(".etat").html("Urgente");
+        return res;
+    }
+   
     function OnClickConsulter(id_commande){
-        document.location.href="c_manager/affichageCommande/"+id_commande
+        document.location.href="c_manager/affichageCommande/"+id_commande;
         
     }
+    
     
 $.fn.pageMe = function(opts){
     var $this = this,

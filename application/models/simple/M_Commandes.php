@@ -122,10 +122,11 @@ class M_Commandes extends MY_Model{
     }
     
      public function setUrgent($id_commande){
-        $com = $this->getById($id_commande);
-         $com->id_etat = ETAT_URGENT;
-        $com->etat = "Urgent";
-        $this->update($com);
+       $com = $this->getById($id_commande);
+        $com->id_etat = ETAT_URGENT;
+        $res = $this->update($com);
+        $com->etat = "Urgente";
+        return $res;
     }
     
     public function liberer($id_commande){

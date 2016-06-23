@@ -9,16 +9,16 @@
 	if (isset($user) && !is_null($user)) {
                 if ($user->checkProfil(PROFIL_MANAGER)) {
             ?>
-                    <li><a href="c_manager/affichageStatistique">Commandes</a>
-<!--                        <ul class="col">
+ <!--                     <li><a href="c_manager/affichageStatistique">Commandes</a>
+                      <ul class="col">
                             <li><span></span>
                                 <ul>
                                     <li><a href="export">Export des données</a></li>
                                     <li><a href="statistiques">Statistiques</a></li>
                                 </ul>
                             </li>
-                        </ul>-->
-                    </li>
+                        </ul>
+                    </li>-->
                     <li><a href="c_article/affichage">Articles</a></li>
                     <li><a href="c_gestion_employe/affichage">Employés</a></li>
                     

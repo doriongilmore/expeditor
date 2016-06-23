@@ -18,7 +18,13 @@ class ajax extends MY_Controller {
     }
 	
     
-    public function liberer($id_commande){
+    public function setUrgent($id_commande){
+        $this->load->model('simple/M_Commandes');
+        $res = $this->M_Commandes->setUrgent($id_commande);
+        
+    }
+    
+      public function liberer($id_commande){
         $this->load->model('simple/M_Commandes');
         $res = $this->M_Commandes->liberer($id_commande);
         

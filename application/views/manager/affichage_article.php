@@ -26,14 +26,14 @@
 	<tbody>
        <?php foreach ($articles as $a): ?>
             <tr>
-                <td><?php echo $a->get('id_article') ?></td>
-                <td><?php echo $a->get('nom') ?></td>
-                <td><?php echo $a->get('quantite_stock') ?></td>
-                <td><?php echo $a->get('poids') ?></td>
-                <td><?php echo $a->get('prix') ?></td>
-                <td><a href="c_article/btn_supprimer?id=<?php echo $a->get('id_article') ?>" id="btnDelete" 
+                <td class="idArticle col-md-1"><?php echo $a->get('id_article') ?></td>
+                <td class="nom col-md-1"><?php echo $a->get('nom') ?></td>
+                <td class="qte col-md-1"><?php echo $a->get('quantite_stock') ?></td>
+                <td class="poids col-md-1"><?php echo $a->get('poids') ?></td>
+                <td class="prix col-md-1"><?php echo $a->get('prix') ?></td>
+                <td class="col-md-2"><a href="c_article/btn_supprimer?id=<?php echo $a->get('id_article') ?>" id="btnDelete" 
                     class="btn btn-danger">Supprimer</a>
-                <input type="button" id="btnUpdate" value="Modifier" class="btn btn-warning" onclick="btnUpdateEvent()"></td>
+                <input type="button" id="btnUpdate" value="Modifier" class="btn btn-warning" onclick="btnModif(this)"></td>
             </tr>
         <?php endforeach; ?>    
 	
@@ -44,6 +44,54 @@
     <!--<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>-->
 </div>
    <script>
+    
+            function btnModif(btn_modif)
+    {
+
+        document.getElementById("btnCancel").value='Annuler';
+        document.getElementById("btnAdd").value='Valider';  
+        
+        $('input').each(function(){
+            if($(this).val() == "Modifier"){
+                $(this).attr('disabled', '');
+            }
+        });
+
+
+//        console.log(btn_modif);
+        $('#btnCancel').attr('style', '');
+        var row = $(btn_modif).parent().parent();
+        console.log(row);
+        var valNom = row.children('.nom').html();
+        var valQte = row.children('.qte').html();
+        var valPoids = row.children('.poids').html();
+        var valPrix = row.children('.prix').html();
+
+
+        row.remove;
+
+        row.children('.qte')
+
+            .html('<input class="col-md-12" type="text" value="'+row.children('.qte').html()+'"/>');
+
+        row.children('.qte')
+            .attr('style', '');
+
+        row.children('.poids')
+
+            .html('<input class="col-md-12" type="text" value="'+row.children('.poids').html()+'"/>');
+
+        row.children('.poids')
+            .attr('style', '');
+
+        row.children('.prix')
+
+            .html('<input class="col-md-12" type="text" value="'+row.children('.prix').html()+'"/>');
+
+        row.children('.prix')
+            .attr('style', '');
+        
+    }
     
     function btnAddEvent()
     {      

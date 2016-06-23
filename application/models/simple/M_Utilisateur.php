@@ -85,4 +85,9 @@ class M_Utilisateur extends MY_Model{
     {
         return $this->M_bdUtilisateur->delete($id);
     }
+    
+    public function update($data)
+    {
+        return $this->M_bdUtilisateur->update($data);
+    }
 }

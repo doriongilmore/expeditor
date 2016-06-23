@@ -61,14 +61,16 @@ class ajax extends MY_Controller {
     public function sauvegarderModificationEmploye(){
         
         $this->load->model('simple/M_Utilisateur');
-        $newEmploye = new M_Utilisateur();
-        $newEmploye->set('id_profil', $_POST['type']);
+//        $newEmploye = new M_Utilisateur();
+        $newEmploye = $this->M_Utilisateur->getById($_POST['id_utilisateur']);
+//        $newEmploye->set('id_utilisateur', $_POST['id_utilisateur']);
+        $newEmploye->set('id_profil', $_POST['profil']);
         $newEmploye->set('nom', $_POST['nom']);
         $newEmploye->set('prenom', $_POST['prenom']);
-        $newEmploye->set('login', $_POST['login']);
-        $newEmploye->set('password', $_POST['password']);
-     
-        $res = $this->M_bdUtilisateur->update($newEmploye);
+//        $newEmploye->set('login', $_POST['login']);
+//        $newEmploye->set('password', $_POST['password']);
+        var_dump($newEmploye);
+        $res = $this->M_Utilisateur->update($newEmploye);
         if (is_null($res))
             echo 'true';
         else

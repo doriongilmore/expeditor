@@ -28,7 +28,22 @@
             <tr>
                 <td class="id_utilisateur"><?php echo $e->get('id_utilisateur') ?>
         <input class="id_utilisateur_hidden" type="hidden" value="<?php echo $e->get('id_utilisateur') ?>"/></td>
-                <td class="id_profil"><?php echo $e->get('id_profil') ?></td>
+                <td class="id_profil">
+                    
+                    <?php 
+                    
+                 
+                    if($e->get('id_profil')==1){
+                        echo "Employé";
+                    }else{
+                        echo "Manager";
+                    }
+                            
+                            ?>
+                
+                
+                
+                </td>
                 <td class="prenom"><?php echo $e->get('prenom') ?></td>
                 <td class="nom"><?php echo $e->get('nom') ?></td>
                 <td class="login"><?php echo $e->get('login') ?></td>
@@ -89,8 +104,20 @@
         var row = $(btn_modif).parent().parent();
 //        console.log(row);
 
-        row.children('.id_profil')
-                .html('<input type="text" value="'+row.children('.id_profil').html()+'"/>');
+        if($.trim(row.children('.id_profil').html()) == 'Manager'){
+               row.children('.id_profil')
+                .html('<select class="form-control col-md-1">\n\
+                <option value="1">Employé</option>\n\
+                <option selected="selected" value="2">Manager</option>\n\
+                </select>')
+        }else{
+             row.children('.id_profil')
+                .html('<select class="form-control col-md-1">\n\
+                <option selected="selected" value="1">Employé</option>\n\
+                <option value="2">Manager</option>\n\
+                </select>')
+        }
+                
         row.children('.id_profil').attr('style', '');
         
         row.children('.prenom')

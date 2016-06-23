@@ -27,6 +27,7 @@
        <?php foreach ($employes as $e): ?>
             <tr>
                 <td class="id_utilisateur"><?php echo $e->get('id_utilisateur') ?></td>
+        <input class="id_utilisateur_hidden" type="hidden" value="<?php echo $e->get('id_utilisateur') ?>"/>
                 <td class="id_profil"><?php echo $e->get('id_profil') ?></td>
                 <td class="prenom"><?php echo $e->get('prenom') ?></td>
                 <td class="nom"><?php echo $e->get('nom') ?></td>
@@ -48,11 +49,18 @@
    
         function btnModif(btn_modif)
     {
+        
+
+        
+        $('input').each(function(){
+            if($(this).val() == "Modifier"){
+                $(this).attr('disabled', '');
+            }
+        });
 //        console.log(btn_modif);
         $('#btnCancel').attr('style', '');
+        
         var row = $(btn_modif).parent().parent();
-        document.getElementById("btnAdd").value='Valider';
-        $('#btnUpdate').attr('disabled', '');
 //        console.log(row);
 
         row.children('.id_profil')
@@ -70,6 +78,27 @@
         row.children('.login')
                 .html('<input type="text" value="'+row.children('.login').html()+'"/>');
         row.children('.login').attr('style', '');
+        
+                if(document.getElementById('btnAdd').value==='Valider')
+        {
+            alert('aleeeeeeerte !!!!');
+            var url = URI + 'ajax/sauvegarderModificationEmploye';
+            data = {
+            'id_utilisateur' : $('.id_utilisateur_hidden').children('input').val(),    
+            'profil' : $('.id_profil').children('input').val(),
+            'prenom' : $('.prenom').children('input').val(),
+            'nom' : $('.nom').children('input').val(),
+            'login' : $('.login').children('input').val(),
+            'password' : 'password'}
+        
+            var_dump(data);
+            requeteAjax(url, data);
+        }
+                 $("btnAdd").attr("onclick", "btnModif()");
+        alert(document.getElementById("btnAdd").value.toString());
+
+        document.getElementById("btnCancel").value='Annuler';
+        document.getElementById("btnAdd").value='Valider';  
     }
     
     

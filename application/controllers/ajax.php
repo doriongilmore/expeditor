@@ -57,4 +57,21 @@ class ajax extends MY_Controller {
             echo 'false';
     }
     
+    
+    public function sauvegarderModificationEmploye(){
+        
+        $this->load->model('simple/M_Utilisateur');
+        $newEmploye = new M_Utilisateur();
+        $newEmploye->set('id_profil', $_POST['type']);
+        $newEmploye->set('nom', $_POST['nom']);
+        $newEmploye->set('prenom', $_POST['prenom']);
+        $newEmploye->set('login', $_POST['login']);
+        $newEmploye->set('password', $_POST['password']);
+     
+        $res = $this->M_bdUtilisateur->update($newEmploye);
+        if (is_null($res))
+            echo 'true';
+        else
+            echo 'false';
+    }
 }

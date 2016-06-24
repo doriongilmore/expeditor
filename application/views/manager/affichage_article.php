@@ -29,6 +29,7 @@
 	
 	</tbody>
 </table>
+<div>
     <input type="button" id="btnCancel" value="Annuler" style="display:none" 
            class="btn btn-warning" onclick="btnUpdateEvent()">
     <input type="button" id="btnAdd" value="Ajouter" 

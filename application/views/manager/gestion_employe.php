@@ -44,6 +44,7 @@
 	
 	</tbody>
 </table>
+<div>
     <input type="button" id="btnCancel" value="Annuler" style="display:none" class="btn btn-warning" onclick="btnUpdateEvent()">
     <input type="button" id="btnAdd" value="Ajouter" class="btn btn-success" onclick="btnAddEvent()"> 
     <!--<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>-->

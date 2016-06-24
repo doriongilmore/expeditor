@@ -22,7 +22,8 @@
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url']	= 'http://10.12.200.4/expeditor/index.php';
+//$config['base_url']	= 'http://10.12.200.4/expeditor/index.php';
+$config['base_url']	= 'http://localhost/expeditor/index.php';
 
 /*
 |--------------------------------------------------------------------------

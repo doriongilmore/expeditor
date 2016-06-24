@@ -117,7 +117,6 @@ class C_Manager extends MY_Controller {
                     }
                     $cpt++;
                 }
-//                $ext = pathinfo($filepath, PATHINFO_EXTENSION);
             }else{ // afficher erreur à l'utilisateur
                 $this->data['message']['error'] = $bool;
             } 

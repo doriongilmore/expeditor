@@ -41,7 +41,8 @@ class M_bdCommandes extends MY_Model{
     public function getNbCommandeByUtilisateur($id_utilisateur){
            $this->db->select('count(*) nb')
                  ->from($this->main_table)
-                 ->where('DAY(date_traitement)',12)
+                 ->where('(date_traitement)', date(FORMAT_DATE_TRAITEMENT))
+                 ->where('id_etat',ETAT_TERMINE)
                  ->where('id_utilisateur_traite', $id_utilisateur);
         $res = $this->db->get()->result();
         if(empty($res))
@@ -76,6 +77,8 @@ class M_bdCommandes extends MY_Model{
                 ->from('commande')
 //                ->where('date_demande = (SELECT MIN(date_demande) FROM (`commande`))')
                 ->where('id_etat != ', ETAT_TERMINE)
+//                ->where('ISNULL(id_utilisateur_traite)')
+                ->where('id_utilisateur_traite IS NULL')
                 ->order_by('date_demande', 'ASC')
                
                 ;
@@ -92,6 +95,7 @@ class M_bdCommandes extends MY_Model{
                 ->from('commande')
 //                ->where('date_demande = (SELECT MIN(date_demande) FROM (`commande`))')
                 ->where('id_etat', ETAT_URGENT)
+                ->where('id_utilisateur_traite IS NULL')
                ->order_by('date_demande', 'ASC')
                 ;
                 

@@ -6,7 +6,7 @@
                 <h3>Statistique</h3>
                 <table class="table table-striped table-bordered">
                     <thead class="">
-                    <th>Employé</th><th>Nombre de commande</th>
+                    <th>Employé</th><th>Nombre de commandes traitées aujourd'hui</th>
                     </thead>
                     <tbody>
                         <?php                    

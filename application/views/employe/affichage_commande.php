@@ -1,4 +1,7 @@
+    <?php if (!is_null($commande)) {?>
     <?php echo form_open('', array('method'=>'post', 'onSubmit'=>'return validation_commande();')) ; ?>
+    
+
     <?php echo form_hidden('id_commande', $commande->get('id_commande'))  ; ?>
     <div id="Commande">
             <div id="Client" class="panel-title bloc">
@@ -45,3 +48,4 @@
         
     </div>
         <?php echo form_close() ; ?>
+<?php } ?>

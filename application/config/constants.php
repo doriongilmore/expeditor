@@ -18,8 +18,12 @@ define('FORMAT_DATE_COMMANDE', 'Y-m-d H:i:s');
 // Consantes d'application
 define('NOM_APPLICATION','EXPEDITOR');
 define('NUM_VERSION','0.0');
+
+$protocole = ((preg_match('/authentification/',$_SERVER['REQUEST_URI']) == 1)?'https':'http');
+define('PROTOCOLE',$protocole);
+
 $name = explode('/', $_SERVER['SERVER_NAME']);
-define('APPLICATION_URI', 'http://' . $name[0] . '/expeditor');
+define('APPLICATION_URI', PROTOCOLE. '://' . $name[0] . '/expeditor');
 
 /*
 |--------------------------------------------------------------------------

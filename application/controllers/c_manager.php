@@ -33,6 +33,11 @@ class C_Manager extends MY_Controller {
     {
         $this->load->model('simple/M_Utilisateur');
         $this->load->model('simple/M_Commandes');
+        
+        if (isset($_SESSION['temp_message'])) {
+            $this->data['message'] = $_SESSION['temp_message'];
+            unset($_SESSION['temp_message']);
+        }
 
         $this->data['commandes'] = $this->M_Commandes->getAllNonTraitee();
         $this->data['statistique'] = $this->M_Utilisateur->getAllStatCommande();
@@ -94,7 +99,6 @@ class C_Manager extends MY_Controller {
                         $array_article = explode(';', $articles_commande);
                         
                         foreach ($array_article as $art) {
-//                            $test = preg_split('/([a-z ]*)(\([0-9]*\))/i', $art);
                             $tmp_arr = explode('(', $art);
                             $libelle_article = trim($tmp_arr[0]);
                             $tmp_arr = explode(')', $tmp_arr[1]);
@@ -103,7 +107,6 @@ class C_Manager extends MY_Controller {
                             $a = $this->M_Article->getByNom($libelle_article);
                             if (!is_null($a)) {
                                 
-//                            $lc = new M_Ligne_Commandes();
                                 $lc = $this->M_Ligne_Commandes->initialisation(array(
                                     'id_ligne_commande' => null,
                                     'id_commande' => $id_commande,
@@ -117,13 +120,15 @@ class C_Manager extends MY_Controller {
                     }
                     $cpt++;
                 }
+                $this->data['message']['valid'] = 'Fichier de commandes importé avec succès';
             }else{ // afficher erreur à l'utilisateur
                 $this->data['message']['error'] = $bool;
             } 
         }
-        
-        
-        $this->_loadView('manager/import');
+        $_SESSION['temp_message'] = $this->data['message'];
+        redirect('c_manager/affichageStatistique');
+        $this->affichageStatistique();
+//        $this->_loadView('manager/import');
     }
     
     

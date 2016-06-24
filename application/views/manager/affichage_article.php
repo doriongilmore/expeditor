@@ -1,16 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>EXPEDITOR</title>
-</head>
-<body>
-
-<div id="container">
-    <h1></h1>
-    <div id="logo">
-    </div>
-
     <table class="table table-striped" id="articleTable">
 	<caption>Liste des articles</caption>
 	<thead>
@@ -62,20 +49,34 @@
         
         if(document.getElementById('btnAdd').value==='Valider')
         {      
-         
-         
-            var url = URI + 'ajax/sauvegarderModificationArticle';
-            data = {
-                
-            'id_article' : document.getElementById('idStock').value.toString(),    
-            'nom' : $('.nom').children('input').val(),
-            'qte' : $('.qte').children('input').val(),
-            'poids' : $('.poids').children('input').val(),
-            'prix' : $('.prix').children('input').val()}
+            try {
+                if(parseInt($('.qte').children('input').val()) > 0 ){
+                    if(parseInt($('.poids').children('input').val()) > 0 ){
+                        if(parseInt($('.prix').children('input').val()) > 0 ){
+                            var url = URI + 'ajax/sauvegarderModificationArticle';
+                            data = {
 
-            console.log(data);
-            requeteAjax(url, data);
-            location.reload();
+                            'id_article' : document.getElementById('idStock').value.toString(),    
+                            'nom' : $('.nom').children('input').val(),
+                            'qte' : $('.qte').children('input').val(),
+                            'poids' : $('.poids').children('input').val(),
+                            'prix' : $('.prix').children('input').val()}
+
+                            requeteAjax(url, data);
+                            location.reload();
+                        }else{
+                            alert('Le prix doit être supérieur à 0.');
+                        }
+                    }else{
+                        alert('Le poids doit être supérieur à 0.');
+                    }
+                }else{
+                    alert('La quantité doit être supérieure à 0.');
+                }
+            }
+            catch(e){
+                alert('Le prix, le poids et la quantité doivent être des entiers positifs.')
+            }
         }
 
 
@@ -89,15 +90,8 @@
         });
 
 
-//        console.log(btn_modif);
         $('#btnCancel').attr('style', '');
         var row = $(btn_modif).parent().parent();
-        console.log(row);
-        var valNom = row.children('.nom').html();
-        var valQte = row.children('.qte').html();
-        var valPoids = row.children('.poids').html();
-        var valPrix = row.children('.prix').html();
-
 
         row.remove;
 
@@ -127,7 +121,6 @@
     function btnAddEvent()
     {      
         if(document.getElementById("btnAdd").value==='Ajouter'){
-//            document.getElementById("btnCancel").style='display:';
             $('#btnCancel').attr('style', '');
             document.getElementById("btnAdd").value='Valider'; 
         
@@ -143,20 +136,38 @@
             .append('</tr>');
         }
         else{
-            document.getElementById("btnUpdate").value='Modifier';
-            document.getElementById("btnAdd").value='Ajouter'; 
-            
-            var url = URI + 'ajax/sauvegarderArticle';
-            data = {
-            'nom' : $('#newNom').children('input').val(),
-            'qte' : $('#newQte').children('input').val(),
-            'poids' : $('#newPoids').children('input').val(),
-            'prix' : $('#newPrix').children('input').val()
+            try {
+                if(parseInt($('#newQte').children('input').val()) > 0 ){
+                    if(parseInt($('#newPoids').children('input').val()) > 0 ){
+                        if(parseInt($('#newPrix').children('input').val()) > 0 ){
+                            
+                            document.getElementById("btnUpdate").value='Modifier';
+                            document.getElementById("btnAdd").value='Ajouter'; 
+                            
+                            var url = URI + 'ajax/sauvegarderArticle';
+                            
+                            data = {
+                                'id_article' : document.getElementById('idStock').value.toString(),    
+                                'nom' : $('#newNom').children('input').val(),
+                                'qte' : $('#newQte').children('input').val(),
+                                'poids' : $('#newPoids').children('input').val(),
+                                'prix' : $('#newPrix').children('input').val()
+                            }
+                            requeteAjax(url, data);
+                            location.reload();
+                        }else{
+                            alert('Le prix doit être supérieur à 0.');
+                        }
+                    }else{
+                        alert('Le poids doit être supérieur à 0.');
+                    }
+                }else{
+                    alert('La quantité doit être supérieure à 0.');
+                }
             }
-        
-            requeteAjax(url, data);
-            location.reload();
-
+            catch(e){
+                alert('Le prix, le poids et la quantité doivent être des entiers positifs.')
+            }
         }
    
     }
@@ -178,5 +189,3 @@
     }
 
     </script>
-</body>
-</html>

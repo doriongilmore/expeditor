@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>EXPEDITOR</title>
-</head>
-<body>
-
-<div id="container">
-    <h1></h1>
-    <div id="logo">
-    </div>
 
     <table class="table table-striped" id="employeTable">
 	<caption>Liste des employés</caption>
@@ -84,7 +72,6 @@
             'prenom' : $('.prenom').children('input').val(),
             'nom' : $('.nom').children('input').val()}
 
-            console.log(data);
             requeteAjax(url, data);
             location.reload();
         }
@@ -98,11 +85,9 @@
                 $(this).attr('disabled', '');
             }
         });
-//        console.log(btn_modif);
         $('#btnCancel').attr('style', '');
         
         var row = $(btn_modif).parent().parent();
-//        console.log(row);
 
         if($.trim(row.children('.id_profil').html()) == 'Manager'){
                row.children('.id_profil')
@@ -191,5 +176,3 @@
    
     
     </script>
-</body>
-</html>

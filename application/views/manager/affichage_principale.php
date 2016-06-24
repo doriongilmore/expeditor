@@ -14,7 +14,7 @@
                            foreach($statistique as $data){
                             ?>
                             <tr>
-                                <td><?php echo $data['emp']->get('nom') ; ?></td>
+                                <td><?php echo $data['emp']->get('nom') . ' ' . $data['emp']->get('prenom') ; ?></td>
                                 <td><?php echo $data['nb'] ; ?></td>
                             </tr>
                            <?php } ?>
@@ -24,7 +24,7 @@
             
             <h3>Importer les commandes</h3>
             
-            <?php echo form_open_multipart('') ?>
+            <?php echo form_open_multipart('c_manager/importer_commandes'); ?>
             <?php // echo form_upload('Fichier Commandes Clients', array('name'=>'upload','class' => 'parcourir', 'id'=>'file_upload')) ?>
             <div class="form_row">
                 

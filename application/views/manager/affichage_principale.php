@@ -46,7 +46,7 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered">
                             <thead class="">
-                                <th>N° Commandes</th><th>Statut</th><th>Employé</th><th>Consulter</th><th>Libérer</th><th>Urgent</th>
+                                <th>N° Commandes</th><th>Statut</th><th>Employé</th><th>Consulter</th><th>Désattribuer</th><th>Urgent</th>
                             </thead>
                             <tbody id="myTable">
                                 <?php foreach($commandes as $m_commandes){ 
@@ -115,7 +115,7 @@
     function OnClickLiberer(id_commande, object){
         var url = URI + 'ajax/liberer/'+id_commande;
         var res = requeteAjax(url);
-       $(object).removeClass("btn-danger");
+       $(object).removeClass("btn-warning");
        $(object).addClass("disabled");
        $(object).parent().parent().children(".etat").html("En attente");
        $(object).parent().parent().children(".utilisateur").html(" --- ");
